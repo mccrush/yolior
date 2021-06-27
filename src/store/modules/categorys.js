@@ -8,10 +8,10 @@ export default {
     getCategorys(state, categorys) {
       state.categorys = categorys
     },
-    addKafe(state, item) {
+    addCategory(state, item) {
       state.categorys.push(item)
     },
-    removeKafe(state, id) {
+    removeCategory(state, id) {
       state.categorys = state.categorys.filter(item => item.id !== id)
     }
   },
@@ -24,11 +24,11 @@ export default {
         categorys.push(doc.data())
       })
 
-      commit('getcategorys', categorys)
+      commit('getCategorys', categorys)
     },
-    async addCategory({ commit }, item) {
+    async addCategory({ commit }, { item, kafeId }) {
       try {
-        const ref = db.collection('categorys')
+        const ref = db.collection('kafes').doc(kafeId).collection('categorys')
         await ref.doc(item.id).set(item)
         return true
       } catch (error) {

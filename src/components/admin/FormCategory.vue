@@ -7,6 +7,7 @@
         class="form-control"
         placeholder="Title"
         @input="toTranslit"
+        :disabled="!kafeId"
       />
     </div>
     <div class="col-12 mt-1">
@@ -15,6 +16,7 @@
         v-model.trim="alias"
         class="form-control"
         placeholder="Alias"
+        :disabled="!kafeId"
       />
     </div>
     <div class="col-12 mt-1">
@@ -22,6 +24,7 @@
         type="button"
         class="btn btn-sm btn-success w-100"
         @click="addItem"
+        :disabled="!kafeId"
       >
         Add
       </button>
@@ -66,7 +69,8 @@
 import translit from '@/scripts/translit'
 export default {
   props: {
-    item: Object
+    item: Object,
+    kafeId: String
   },
   emits: ['clear-item'],
   data() {
@@ -81,13 +85,17 @@ export default {
         const item = {
           id: Date.now().toString(),
           title: this.title,
-          alias: this.alias
+          alias: this.alias,
+          kafeId: this.kafeId
         }
 
-        this.$store.commit('addKafe', item)
+        this.$store.commit('addCategory', item)
         this.title = ''
         this.alias = ''
-        const res = await this.$store.dispatch('addKafe', item)
+        const res = await this.$store.dispatch('addCategory', {
+          item,
+          kafeId: this.kafeId
+        })
         if (res) {
           this.$store.commit('addMessage', 'das')
         } else {
@@ -97,7 +105,7 @@ export default {
     },
     async updateItem() {
       if (this.item.title && this.item.alias) {
-        const res = await this.$store.dispatch('updateKafe', this.item.id)
+        const res = await this.$store.dispatch('updateCategory', this.item.id)
         if (res) {
           this.$store.commit('addMessage', 'dus')
         } else {

@@ -1,7 +1,7 @@
 export default {
   state: {
-    kafe: localStorage.getItem('kafe') || '',
-    category: localStorage.getItem('category') || ''
+    kafeId: localStorage.getItem('kafeId') || '',
+    categoryId: localStorage.getItem('categoryId') || ''
   },
   mutations: {
     // setKafe(state, kafe) {
@@ -16,14 +16,14 @@ export default {
     //   state.product = product
     //   localStorage.setItem('product', product)
     // },
-    setValue(state, { type, alias }) {
-      state[type] = alias
-      localStorage.setItem(type, alias)
+    setValue(state, { type, id }) {
+      state[type] = id
+      localStorage.setItem(type, id)
     }
   },
   actions: {},
   getters: {
-    kafe: state => state.kafe,
-    category: state => state.category
+    kafeId: state => state.kafeId,
+    categoryId: state => state.categoryId
   }
 }

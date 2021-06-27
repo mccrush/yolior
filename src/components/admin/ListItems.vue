@@ -11,7 +11,7 @@
         align-items-center
         lh-1
       "
-      @click="setItem(type, item.alias)"
+      @click="setItemId(item.id)"
     >
       {{ item.title }}
       <div class="btns btn-group">
@@ -48,16 +48,8 @@ export default {
         this.$store.commit('addMessage', 'rie')
       }
     },
-    setItem(type, alias) {
-      // if (type === 'kafe') {
-      //   this.$store.commit('setKafe', { type, alias })
-      // } else if (type === 'category') {
-      //   this.$store.commit('setCategory', { type, alias })
-      // } else if (type === 'product') {
-      //   this.$store.commit('setProduct', { type, alias })
-      // }
-
-      this.$store.commit('setValue', { type, alias })
+    setItemId(id) {
+      this.$store.commit('setValue', { type: this.type, id })
     }
   }
 }

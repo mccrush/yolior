@@ -6,15 +6,19 @@
           <h4 class="text-center">Kafe</h4>
           <FormKafe :item="kafe" @clear-item="kafe = null" />
           <hr />
-          <ListItems :list="kafes" type="kafe" @edit-item="editKafe" />
+          <ListItems :list="kafes" type="kafeId" @edit-item="editKafe" />
         </div>
         <div class="col-4">
           <h4 class="text-center">Category</h4>
-          <FormCategory :item="category" @clear-item="category = null" />
+          <FormCategory
+            :item="category"
+            :kafeId="kafeId"
+            @clear-item="category = null"
+          />
           <hr />
           <ListItems
             :list="categorys"
-            type="category"
+            type="categoryId"
             @edit-item="editCategory"
           />
         </div>
@@ -33,11 +37,13 @@
 
 <script>
 import FormKafe from '@/components/admin/FormKafe'
+import FormCategory from '@/components/admin/FormCategory'
 import ListItems from '@/components/admin/ListItems'
 import Message from '@/components/Message'
 export default {
   components: {
     FormKafe,
+    FormCategory,
     ListItems,
     Message
   },
@@ -51,6 +57,9 @@ export default {
   computed: {
     kafes() {
       return this.$store.getters.kafes
+    },
+    kafeId() {
+      return this.$store.getters.kafeId
     },
     categorys() {
       return this.$store.getters.categorys
