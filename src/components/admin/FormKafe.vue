@@ -1,5 +1,5 @@
 <template>
-  <div class="row">
+  <div v-if="kafe === null" class="row">
     <div class="col-12">
       <input
         type="text"
@@ -18,9 +18,46 @@
       />
     </div>
     <div class="col-12 mt-1">
-      <button type="button" class="btn btn-success w-100" @click="addKafe">
+      <button
+        type="button"
+        class="btn btn-sm btn-success w-100"
+        @click="addKafe"
+      >
         Add
       </button>
+    </div>
+  </div>
+  <div v-if="kafe" class="row">
+    <div class="col-12">
+      <input
+        type="text"
+        v-model.trim="kafe.title"
+        class="form-control"
+        placeholder="Title"
+        @input="toTranslit"
+      />
+    </div>
+    <div class="col-12 mt-1">
+      <input
+        type="text"
+        v-model.trim="kafe.alias"
+        class="form-control"
+        placeholder="Alias"
+      />
+    </div>
+    <div class="col-12 mt-1">
+      <div class="btn-group btn-group-sm w-100">
+        <button
+          type="button"
+          class="btn btn-outline-secondary w-25"
+          @click="$emit('clear-kafe')"
+        >
+          CLR
+        </button>
+        <button type="button" class="btn btn-success w-75" @click="updateKafe">
+          Save
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -28,6 +65,10 @@
 <script>
 import translit from '@/script/translit'
 export default {
+  props: {
+    kafe: Object
+  },
+  emits: ['clear-kafe'],
   data() {
     return {
       title: '',
@@ -47,6 +88,18 @@ export default {
         this.title = ''
         this.alias = ''
         const res = await this.$store.dispatch('addKafe', kafe)
+      }
+    },
+    async updateKafe() {
+      if (this.kafe.title) {
+        const kafe = {
+          id: Date.now().toString(),
+          title: this.kafe.title,
+          alias: this.kafe.alias
+        }
+
+        this.$store.commit('updateKafe', kafe)
+        const res = await this.$store.dispatch('updateKafe', kafe)
       }
     },
     toTranslit() {

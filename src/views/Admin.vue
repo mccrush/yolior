@@ -5,9 +5,9 @@
       <div class="row">
         <div class="col-4">
           <h5>Kafe</h5>
-          <FormKafe />
+          <FormKafe :kafe="kafe" @clear-kafe="kafe = null" />
           <hr />
-          <ListItems :list="kafes" />
+          <ListItems :list="kafes" @edit-item="editItem" />
         </div>
         <div class="col-4"></div>
         <div class="col-4"></div>
@@ -24,9 +24,19 @@ export default {
     FormKafe,
     ListItems
   },
+  data() {
+    return {
+      kafe: null
+    }
+  },
   computed: {
     kafes() {
       return this.$store.getters.kafes
+    }
+  },
+  methods: {
+    editItem(id) {
+      this.kafe = this.kafes.find(item => item.id === id)
     }
   }
 }

@@ -14,7 +14,10 @@
     >
       {{ item.title }}
       <div class="btns btn-group">
-        <button class="btn btn-sm btn-outline-secondary p-0 ps-1 pe-1">
+        <button
+          class="btn btn-sm btn-outline-secondary p-0 ps-1 pe-1"
+          @click.self="$emit('edit-item', item.id)"
+        >
           Edit
         </button>
         <button class="btn btn-sm btn-outline-secondary p-0 ps-1 pe-1">
