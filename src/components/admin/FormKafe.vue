@@ -6,6 +6,7 @@
         v-model.trim="title"
         class="form-control"
         placeholder="Title"
+        @input="toTranslit"
       />
     </div>
     <div class="col-12 mt-1">
@@ -25,6 +26,7 @@
 </template>
 
 <script>
+import translit from '@/script/translit'
 export default {
   data() {
     return {
@@ -46,6 +48,9 @@ export default {
         this.alias = ''
         const res = await this.$store.dispatch('addKafe', kafe)
       }
+    },
+    toTranslit() {
+      this.alias = translit(this.title)
     }
   }
 }
