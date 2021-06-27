@@ -1,25 +1,20 @@
 <template>
-  <div class="row border-top mt-1 ps-2 pt-3 pe-2">
-    <div class="col-3">
-      Yolior
-      <small class="d-block mb-3 text-muted"
-        >&copy; {{ new Date().getFullYear() }}</small
+  <div class="row border-top text-center mt-1 ps-2 pt-2 pe-2 pb-2">
+    <div class="col-12">
+      <small class="mb-3 text-muted"
+        >&copy; {{ new Date().getFullYear() }} Yolior&nbsp;</small
       >
-      <small class="d-block mb-3 text-muted">
-        Разработка сайта
-        <br />
+      <small class="mb-3 text-muted">
+        |&nbsp;&nbsp;Разработка
         <a
           class="link"
           href="https://mccrush.ru"
           target="_blank"
           title="Перейти на сайт mccrush.ru"
-          >«mccrush.ru»</a
+          >«mccrush apps»</a
         >
       </small>
     </div>
-    <div class="col-3"></div>
-    <div class="col-3"></div>
-    <div class="col-3"></div>
   </div>
 </template>
 <script>
