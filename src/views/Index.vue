@@ -8,19 +8,13 @@
         accusantium itaque laborum a aut officiis, numquam laudantium maiores
         cupiditate eaque?
       </p>
-      <Reshens-block />
-      <Napravs-block />
+      <h3>Здесь должен быть список кафе</h3>
     </div>
   </div>
 </template>
 
 <script>
-import ReshensBlock from '@/components/index/ReshensBlock'
-import NapravsBlock from '@/components/index/NapravsBlock'
 export default {
-  components: {
-    ReshensBlock,
-    NapravsBlock
-  }
+  components: {}
 }
 </script>

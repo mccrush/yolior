@@ -23,9 +23,7 @@ export default {
     FooterBlock
   },
   data() {
-    return {
-      razdels: ['reshens', 'napravs', 'napravs_vid', 'abouts']
-    }
+    return {}
   }
 }
 </script>

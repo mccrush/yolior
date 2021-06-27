@@ -1,8 +1,7 @@
 <template>
   <h1>Admin</h1>
   <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet itaque eaque
-    eos cumque libero excepturi culpa! Corrupti quod repudiandae accusantium
-    itaque laborum a aut officiis, numquam laudantium maiores cupiditate eaque?
+    Здесь должен быть список кафе<br />
+    Возможность добавлять новое кафе
   </p>
 </template>
