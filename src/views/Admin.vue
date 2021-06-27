@@ -85,6 +85,9 @@ export default {
           this.$store.commit('addMessage', 'null')
         }, 3600)
       }
+    },
+    kafeId(newId) {
+      this.$store.dispatch('getCategorys', newId)
     }
   }
 }

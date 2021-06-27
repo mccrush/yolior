@@ -16,9 +16,9 @@ export default {
     }
   },
   actions: {
-    async getCategorys({ commit }) {
+    async getCategorys({ commit }, kafeId) {
       let categorys = []
-      const ref = db.collection('categorys')
+      const ref = db.collection('kafes').doc(kafeId).collection('categorys')
       const snapshot = await ref.get()
       snapshot.forEach(doc => {
         categorys.push(doc.data())
