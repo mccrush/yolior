@@ -19,7 +19,7 @@ const router = createRouter({
       component: () => import('../views/Admin.vue'),
       // На проде в значение TRUE
       meta: {
-        requiresAuth: true
+        requiresAuth: false
       }
     },
     {
@@ -32,11 +32,11 @@ const router = createRouter({
     //   name: 'razdel',
     //   component: () => import('../views/Razdel.vue')
     // },
-    {
-      path: '/:razdel/:page',
-      name: 'page',
-      component: () => import('../views/Page.vue')
-    },
+    // {
+    //   path: '/:razdel/:page',
+    //   name: 'page',
+    //   component: () => import('../views/Page.vue')
+    // },
     {
       path: '/:catchAll(.*)',
       name: 'notfound',
