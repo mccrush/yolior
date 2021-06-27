@@ -88,11 +88,21 @@ export default {
         this.title = ''
         this.alias = ''
         const res = await this.$store.dispatch('addKafe', kafe)
+        if (res) {
+          this.$store.commit('addMessage', 'das')
+        } else {
+          this.$store.commit('addMessage', 'dae')
+        }
       }
     },
     async updateKafe() {
       if (this.kafe.title && this.kafe.alias) {
         const res = await this.$store.dispatch('updateKafe', this.kafe.id)
+        if (res) {
+          this.$store.commit('addMessage', 'dus')
+        } else {
+          this.$store.commit('addMessage', 'due')
+        }
       }
     },
     toTranslit() {
