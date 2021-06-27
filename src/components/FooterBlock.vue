@@ -17,11 +17,6 @@
     </div>
   </div>
 </template>
-<script>
-export default {
-  data() {}
-}
-</script>
 <style scoped>
 a {
   text-decoration: none;

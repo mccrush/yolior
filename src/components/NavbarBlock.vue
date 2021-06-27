@@ -10,12 +10,23 @@
         />
         <strong>Yolior</strong>
       </router-link>
+      <span v-if="userId" class="navbar-brand badge bg-success text-white"
+        >Вы авторизованы</span
+      ><router-link v-else class="navbar-brand pb-2" to="/login"
+        >Войти</router-link
+      >
     </div>
   </nav>
 </template>
 
 <script>
-export default {}
+export default {
+  computed: {
+    userId() {
+      return this.$store.getters.userId
+    }
+  }
+}
 </script>
 
 <style scoped>

@@ -2,11 +2,11 @@ import { auth } from '@/firebase'
 
 export default {
   state: {
-    user: null
+    userId: null
   },
   mutations: {
-    setUser(state, value) {
-      state.user = value
+    setUserId(state, value) {
+      state.userId = value
     }
   },
   actions: {
@@ -14,7 +14,6 @@ export default {
       try {
         await auth.signInWithEmailAndPassword(email, password)
         console.log('store: Авторизация прошла успешно');
-        commit('setUser', true)
       } catch (err) {
         throw err
       }
@@ -23,13 +22,12 @@ export default {
       try {
         await auth.signOut()
         console.log('store: Пользователь вышел из системы');
-        commit('setUser', false)
       } catch (error) {
         console.log('store: Ошибка при выходе из системы, err:', error)
       }
     }
   },
   getters: {
-    user: state => state.user
+    userId: state => state.userId
   }
 }
