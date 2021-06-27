@@ -1,15 +1,19 @@
 <template>
   <div class="row ps-2 pe-2 pb-3">
     <div class="col-12">
-      <h4>Admin panel</h4>
       <div class="row">
         <div class="col-4">
-          <h5>Kafe</h5>
-          <FormKafe :kafe="kafe" @clear-kafe="kafe = null" />
+          <h4 class="text-center">Kafe</h4>
+          <FormKafe :item="kafe" @clear-item="kafe = null" />
           <hr />
-          <ListItems :list="kafes" @edit-item="editItem" />
+          <ListItems :list="kafes" @edit-item="editKafe" />
         </div>
-        <div class="col-4"></div>
+        <div class="col-4">
+          <h4 class="text-center">Category</h4>
+          <FormCategory :item="category" @clear-item="category = null" />
+          <hr />
+          <ListItems :list="categorys" @edit-item="editCategory" />
+        </div>
         <div class="col-4"></div>
       </div>
     </div>
@@ -36,20 +40,27 @@ export default {
   data() {
     return {
       showMessage: false,
-      kafe: null
+      kafe: null,
+      category: null
     }
   },
   computed: {
     kafes() {
       return this.$store.getters.kafes
     },
+    categorys() {
+      return this.$store.getters.categorys
+    },
     message() {
       return this.$store.getters.getMessage || ''
     }
   },
   methods: {
-    editItem(id) {
+    editKafe(id) {
       this.kafe = this.kafes.find(item => item.id === id)
+    },
+    editCategory(id) {
+      this.category = this.categorys.find(item => item.id === id)
     }
   },
   watch: {
