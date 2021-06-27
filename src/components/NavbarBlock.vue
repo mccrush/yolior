@@ -8,7 +8,7 @@
           class="d-inline-block align-top me-2"
           alt="Logo"
         />
-        <strong>Yolior</strong>
+        <strong>Yolior - заказ доставки в Славгороде</strong>
       </router-link>
       <span v-if="userId" class="navbar-brand badge bg-success text-white"
         >Вы авторизованы</span
