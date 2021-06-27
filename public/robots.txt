@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /login/
+Disallow: /version/
+Disallow: /rtsp/
+Disallow: /404/
+Sitemap: https://ctrl22.ru/sitemap.xml

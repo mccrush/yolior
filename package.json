@@ -1,0 +1,49 @@
+{
+  "name": "yolior",
+  "version": "1.0.0",
+  "description": "no desc",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mccrush/yolior.git"
+  },
+  "keywords": [
+    "yolior"
+  ],
+  "author": "mccrush.ru",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mccrush/yolior/issues"
+  },
+  "homepage": "https://github.com/mccrush/yolior#readme",
+  "dependencies": {
+    "@popperjs/core": "^2.9.2",
+    "bootstrap": "^5.0.1",
+    "firebase": "^8.5.0",
+    "vue": "^3.1.1",
+    "vue-router": "^4.0.9",
+    "vuex": "^4.0.9"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-router": "^4.5.13",
+    "@vue/cli-plugin-vuex": "^4.5.13",
+    "@vue/cli-service": "^4.5.13",
+    "@vue/compiler-sfc": "^3.1.1"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "semi": false,
+    "jsxBracketSameLine": true,
+    "arrowParens": "avoid",
+    "trailingComma": "none"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}
