@@ -6,13 +6,17 @@
           <h4 class="text-center">Kafe</h4>
           <FormKafe :item="kafe" @clear-item="kafe = null" />
           <hr />
-          <ListItems :list="kafes" @edit-item="editKafe" />
+          <ListItems :list="kafes" type="kafe" @edit-item="editKafe" />
         </div>
         <div class="col-4">
           <h4 class="text-center">Category</h4>
           <FormCategory :item="category" @clear-item="category = null" />
           <hr />
-          <ListItems :list="categorys" @edit-item="editCategory" />
+          <ListItems
+            :list="categorys"
+            type="category"
+            @edit-item="editCategory"
+          />
         </div>
         <div class="col-4"></div>
       </div>
