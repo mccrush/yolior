@@ -11,6 +11,9 @@ export default {
     addKafe(state, item) {
       state.kafes.push(item)
     },
+    removeKafe(state, id) {
+      state.kafes = state.kafes.filter(item => item.id !== id)
+    }
   },
   actions: {
     async getKafes({ commit }) {
@@ -29,7 +32,7 @@ export default {
         await ref.doc(item.id).set(item)
         return true
       } catch (error) {
-        console.log('Error kafes.js, action addKafe(): ', error);
+        console.log('Error kafes.js, action addKafe(): ', error)
       }
     },
     async updateKafe({ commit, state }, id) {
@@ -39,9 +42,18 @@ export default {
         await ref.doc(id).update(item)
         return true
       } catch (error) {
-        console.log('Error kafes.js, action updateKafe(): ', error);
+        console.log('Error kafes.js, action updateKafe(): ', error)
       }
     },
+    async removeKafe({ commit }, id) {
+      try {
+        const ref = db.collection('kafes')
+        await ref.doc(id).delete()
+        return true
+      } catch (error) {
+        console.log('Error kafes.js, action removeKafe(): ', error)
+      }
+    }
   },
   getters: {
     kafes: state => state.kafes,

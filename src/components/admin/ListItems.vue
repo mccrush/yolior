@@ -20,7 +20,10 @@
         >
           Edit
         </button>
-        <button class="btn btn-sm btn-outline-secondary p-0 ps-1 pe-1">
+        <button
+          class="btn btn-sm btn-outline-secondary p-0 ps-1 pe-1"
+          @click="removeKafe(item.id)"
+        >
           Del
         </button>
       </div>
@@ -32,6 +35,17 @@
 export default {
   props: {
     list: Array
+  },
+  methods: {
+    async removeKafe(id) {
+      this.$store.commit('removeKafe', id)
+      const res = await this.$store.dispatch('removeKafe', id)
+      if (res) {
+        this.$store.commit('addMessage', 'ris')
+      } else {
+        this.$store.commit('addMessage', 'rie')
+      }
+    }
   }
 }
 </script>
