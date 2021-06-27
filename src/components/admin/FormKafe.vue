@@ -7,6 +7,7 @@
         class="form-control"
         placeholder="Title"
         @input="toTranslit"
+        @keypress.enter="addItem"
       />
     </div>
     <div class="col-12 mt-1">

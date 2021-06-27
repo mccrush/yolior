@@ -7,6 +7,7 @@
         class="form-control"
         placeholder="Title"
         @input="toTranslit"
+        @keypress.enter="addItem"
         :disabled="!kafeId"
       />
     </div>
