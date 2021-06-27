@@ -63,7 +63,7 @@
 </template>
 
 <script>
-import translit from '@/script/translit'
+import translit from '@/scripts/translit'
 export default {
   props: {
     kafe: Object

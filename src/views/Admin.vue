@@ -13,31 +13,69 @@
         <div class="col-4"></div>
       </div>
     </div>
+    <transition name="slide-fade">
+      <Message
+        v-if="showMessage"
+        :message="message.text"
+        :class="message.type"
+      />
+    </transition>
   </div>
 </template>
 
 <script>
 import FormKafe from '@/components/admin/FormKafe'
 import ListItems from '@/components/admin/ListItems'
+import Message from '@/components/Message'
 export default {
   components: {
     FormKafe,
-    ListItems
+    ListItems,
+    Message
   },
   data() {
     return {
+      showMessage: false,
       kafe: null
     }
   },
   computed: {
     kafes() {
       return this.$store.getters.kafes
+    },
+    message() {
+      return this.$store.getters.getMessage || ''
     }
   },
   methods: {
     editItem(id) {
       this.kafe = this.kafes.find(item => item.id === id)
     }
+  },
+  watch: {
+    message() {
+      if (this.message) {
+        this.showMessage = true
+        setTimeout(() => {
+          this.showMessage = false
+          this.$store.commit('addMessage', 'null')
+        }, 3600)
+      }
+    }
   }
 }
 </script>
+
+<style>
+.slide-fade-enter-active {
+  transition: all 0.3s ease;
+}
+.slide-fade-leave-active {
+  transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
+}
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+  transform: translateX(10px);
+  opacity: 0;
+}
+</style>
