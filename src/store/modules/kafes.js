@@ -29,7 +29,17 @@ export default {
         await ref.doc(item.id).set(item)
         return true
       } catch (error) {
-        console.log('Error kafe.js, action addKafe(): ', error);
+        console.log('Error kafes.js, action addKafe(): ', error);
+      }
+    },
+    async updateKafe({ commit, state }, id) {
+      try {
+        const item = state.kafes.find(item => item.id === id)
+        const ref = db.collection('kafes')
+        await ref.doc(id).update(item)
+        return true
+      } catch (error) {
+        console.log('Error kafes.js, action updateKafe(): ', error);
       }
     },
   },

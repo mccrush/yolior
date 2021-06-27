@@ -77,7 +77,7 @@ export default {
   },
   methods: {
     async addKafe() {
-      if (this.title) {
+      if (this.title && this.alias) {
         const kafe = {
           id: Date.now().toString(),
           title: this.title,
@@ -91,15 +91,8 @@ export default {
       }
     },
     async updateKafe() {
-      if (this.kafe.title) {
-        const kafe = {
-          id: Date.now().toString(),
-          title: this.kafe.title,
-          alias: this.kafe.alias
-        }
-
-        this.$store.commit('updateKafe', kafe)
-        const res = await this.$store.dispatch('updateKafe', kafe)
+      if (this.kafe.title && this.kafe.alias) {
+        const res = await this.$store.dispatch('updateKafe', this.kafe.id)
       }
     },
     toTranslit() {
