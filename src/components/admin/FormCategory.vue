@@ -106,7 +106,10 @@ export default {
     },
     async updateItem() {
       if (this.item.title && this.item.alias) {
-        const res = await this.$store.dispatch('updateCategory', this.item.id)
+        const res = await this.$store.dispatch('updateCategory', {
+          id: this.item.id,
+          kafeId: this.kafeId
+        })
         if (res) {
           this.$store.commit('addMessage', 'dus')
         } else {

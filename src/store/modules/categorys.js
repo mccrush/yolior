@@ -35,10 +35,10 @@ export default {
         console.log('Error categorys.js, action addCategory(): ', error)
       }
     },
-    async updateCategory({ commit, state }, id) {
+    async updateCategory({ commit, state }, { id, kafeId }) {
       try {
         const item = state.categorys.find(item => item.id === id)
-        const ref = db.collection('categorys')
+        const ref = db.collection('kafes').doc(kafeId).collection('categorys')
         await ref.doc(id).update(item)
         return true
       } catch (error) {
