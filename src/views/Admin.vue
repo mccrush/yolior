@@ -6,7 +6,9 @@
           <h4 class="text-center">Kafe</h4>
           <FormKafe :item="kafe" @clear-item="kafe = null" />
           <hr />
+          <LoadingAnimate v-if="loadingKafes" />
           <ListItems
+            v-else
             :list="kafes"
             type="kafeId"
             :kafeId="kafeId"
@@ -21,7 +23,9 @@
             @clear-item="category = null"
           />
           <hr />
+          <LoadingAnimate v-if="loadingCategorys" />
           <ListItems
+            v-else
             :list="categorys"
             type="categoryId"
             :kafeId="kafeId"
@@ -46,12 +50,15 @@ import FormKafe from '@/components/admin/FormKafe'
 import FormCategory from '@/components/admin/FormCategory'
 import ListItems from '@/components/admin/ListItems'
 import Message from '@/components/Message'
+import LoadingAnimate from '@/components/LoadingAnimate'
+
 export default {
   components: {
     FormKafe,
     FormCategory,
     ListItems,
-    Message
+    Message,
+    LoadingAnimate
   },
   data() {
     return {
@@ -72,6 +79,12 @@ export default {
     },
     message() {
       return this.$store.getters.getMessage || ''
+    },
+    loadingKafes() {
+      return this.$store.getters.loadingKafes
+    },
+    loadingCategorys() {
+      return this.$store.getters.loadingCategorys
     }
   },
   beforeMount() {
@@ -99,6 +112,9 @@ export default {
     },
     kafeId(newId) {
       this.$store.dispatch('getCategorys', newId)
+    },
+    categorys() {
+      this.category = null
     }
   }
 }

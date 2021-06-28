@@ -2,7 +2,8 @@ import { db } from '@/firebase'
 
 export default {
   state: {
-    kafes: []
+    kafes: [],
+    loadingKafes: false
   },
   mutations: {
     getKafes(state, kafes) {
@@ -13,10 +14,14 @@ export default {
     },
     removeKafe(state, id) {
       state.kafes = state.kafes.filter(item => item.id !== id)
-    }
+    },
+    changeLoading(state, value) {
+      state.loadingKafes = value
+    },
   },
   actions: {
     async getKafes({ commit }) {
+      commit('changeLoading', true)
       let kafes = []
       const ref = db.collection('kafes')
       const snapshot = await ref.get()
@@ -25,6 +30,7 @@ export default {
       })
 
       commit('getKafes', kafes)
+      commit('changeLoading', false)
     },
     async addKafe({ commit }, item) {
       try {
@@ -57,6 +63,6 @@ export default {
   },
   getters: {
     kafes: state => state.kafes,
-
+    loadingKafes: state => state.loadingKafes,
   }
 }

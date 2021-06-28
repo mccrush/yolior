@@ -2,7 +2,8 @@ import { db } from '@/firebase'
 
 export default {
   state: {
-    categorys: []
+    categorys: [],
+    loadingCategorys: false
   },
   mutations: {
     getCategorys(state, categorys) {
@@ -13,10 +14,14 @@ export default {
     },
     removeCategory(state, id) {
       state.categorys = state.categorys.filter(item => item.id !== id)
-    }
+    },
+    changeLoadingC(state, value) {
+      state.loadingCategorys = value
+    },
   },
   actions: {
     async getCategorys({ commit }, kafeId) {
+      commit('changeLoadingC', true)
       let categorys = []
       const ref = db.collection('kafes').doc(kafeId).collection('categorys')
       const snapshot = await ref.get()
@@ -25,6 +30,7 @@ export default {
       })
 
       commit('getCategorys', categorys)
+      commit('changeLoadingC', false)
     },
     async addCategory({ commit }, { item, kafeId }) {
       try {
@@ -57,6 +63,6 @@ export default {
   },
   getters: {
     categorys: state => state.categorys,
-
+    loadingCategorys: state => state.loadingCategorys
   }
 }
