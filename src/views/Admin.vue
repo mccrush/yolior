@@ -69,6 +69,11 @@ export default {
       return this.$store.getters.getMessage || ''
     }
   },
+  beforeMount() {
+    if (this.kafeId) {
+      this.$store.dispatch('getCategorys', this.kafeId)
+    }
+  },
   methods: {
     editKafe(id) {
       this.kafe = this.kafes.find(item => item.id === id)
