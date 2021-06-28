@@ -19,6 +19,7 @@
           <ListItems
             :list="categorys"
             type="categoryId"
+            :kafeId="kafeId"
             @edit-item="editCategory"
           />
         </div>

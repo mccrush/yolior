@@ -45,9 +45,9 @@ export default {
         console.log('Error categorys.js, action updateCategory(): ', error)
       }
     },
-    async removeCategory({ commit }, id) {
+    async removeCategory({ commit }, { id, kafeId }) {
       try {
-        const ref = db.collection('categorys')
+        const ref = db.collection('kafes').doc(kafeId).collection('categorys')
         await ref.doc(id).delete()
         return true
       } catch (error) {

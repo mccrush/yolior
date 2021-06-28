@@ -23,7 +23,7 @@
         </button>
         <button
           class="btn btn-sm btn-outline-secondary p-0 ps-1 pe-1"
-          @click="removeKafe(item.id)"
+          @click="removeItem(item.id)"
         >
           Del
         </button>
@@ -36,12 +36,26 @@
 export default {
   props: {
     list: Array,
-    type: String
+    type: String,
+    kafeId: String
   },
   methods: {
-    async removeKafe(id) {
-      this.$store.commit('removeKafe', id)
-      const res = await this.$store.dispatch('removeKafe', id)
+    async removeItem(id) {
+      let res = false
+      if (this.type === 'kafeId') {
+        this.$store.commit('removeKafe', id)
+        res = await this.$store.dispatch('removeKafe', id)
+      } else if (this.type === 'categoryId') {
+        this.$store.commit('removeCategory', id)
+        res = await this.$store.dispatch('removeCategory', {
+          id,
+          kafeId: this.kafeId
+        })
+      } else if (this.type === 'productId') {
+        this.$store.commit('removeProduct', id)
+        res = await this.$store.dispatch('removeProduct', id)
+      }
+
       if (res) {
         this.$store.commit('addMessage', 'ris')
       } else {
