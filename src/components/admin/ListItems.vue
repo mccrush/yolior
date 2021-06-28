@@ -12,6 +12,7 @@
         lh-1
       "
       @click="setItemId(item.id)"
+      :class="{ active: item.id === kafeId }"
     >
       {{ item.title }}
       <div class="btns btn-group">
@@ -70,6 +71,12 @@ export default {
 </script>
 
 <style scoped>
+.list-group-item.active {
+  color: #212529;
+  background-color: #e9ecef;
+  border-color: #e9ecef;
+}
+
 .btns {
   opacity: 0;
   transition: 0.2s;

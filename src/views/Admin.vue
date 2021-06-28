@@ -6,7 +6,12 @@
           <h4 class="text-center">Kafe</h4>
           <FormKafe :item="kafe" @clear-item="kafe = null" />
           <hr />
-          <ListItems :list="kafes" type="kafeId" @edit-item="editKafe" />
+          <ListItems
+            :list="kafes"
+            type="kafeId"
+            :kafeId="kafeId"
+            @edit-item="editKafe"
+          />
         </div>
         <div class="col-4">
           <h4 class="text-center">Category</h4>
