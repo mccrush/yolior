@@ -6,17 +6,17 @@
       </h4>
       <hr />
       <div class="row row-cols-1 row-cols-md-3 g-4">
-        <div v-for="kafe in kafes" :key="kafe.id" class="col">
+        <div v-for="item in list" :key="item.id" class="col">
           <div class="card shadow-sm border-0 h-100">
             <img
-              src="/img/kafes/01.jpg"
+              :src="'/img/' + item.alias + '/main.jpg'"
               class="card-img-top"
-              :alt="kafe.title"
+              :alt="item.title"
             />
             <div class="card-body">
               <h5 class="card-title text-center">
-                <router-link :to="'/' + kafe.alias" class="stretched-link">{{
-                  kafe.title
+                <router-link :to="'/' + item.alias" class="stretched-link">{{
+                  item.title
                 }}</router-link>
               </h5>
               <!-- <p class="card-text">
@@ -35,6 +35,21 @@ export default {
   computed: {
     kafes() {
       return this.$store.getters.kafes
+    },
+    categorys() {
+      return this.$store.getters.categorys
+    },
+    products() {
+      return this.$store.getters.products
+    },
+    list() {
+      if (this.$route.params.kafe) {
+        return this.categorys
+      } else if (this.$route.params.kafe.category) {
+        return this.products
+      } else {
+        return this.kafes
+      }
     }
   }
 }
