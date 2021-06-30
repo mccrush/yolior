@@ -16,55 +16,34 @@
       </div>
       <hr />
       <LoadingAnimate v-if="loadingKafes" />
-      <div v-else class="row row-cols-1 row-cols-md-3 g-4">
-        <div v-for="item in list" :key="item.id" class="col">
-          <div class="card shadow-sm border-0 h-100">
-            <img
-              :src="'/img/' + item.alias + '/main.jpg'"
-              class="card-img-top"
-              :alt="item.title"
-            />
-            <div class="card-body">
-              <h5 class="card-title text-center">
-                <router-link :to="'/' + item.alias" class="stretched-link">{{
-                  item.title
-                }}</router-link>
-              </h5>
-              <!-- <p class="card-text">
-                
-              </p> -->
-            </div>
-          </div>
-        </div>
-      </div>
+      <LoadingAnimate v-if="loadingCategorys" />
+      <LoadingAnimate v-if="loadingProducts" />
+      <!-- <ListKafes
+        v-if="$route.params.kafe.length === 2"
+        :list="products"
+        type="productId"
+      />
+      <ListKafes
+        v-if="$route.params.kafe.length === 1"
+        :list="categorys"
+        type="categoryId"
+      /> -->
+      <ListKafes v-else :list="list" :type="type" />
     </div>
   </div>
 </template>
 
 <script>
+import ListKafes from '@/components/index/ListKafes'
 import LoadingAnimate from '@/components/LoadingAnimate'
 
 export default {
   components: {
+    ListKafes,
     LoadingAnimate
   },
   beforeMount() {
-    if (this.$route.params.kafe) {
-      let kafeId = this.kafes.find(
-        item => item.alias === this.$route.params.kafe
-      )
-      console.log('bm kafeId:', kafeId)
-      // this.$store.dispatch('getCategorys', kafeId)
-      // this.list = this.categorys
-    } else {
-      this.list = this.kafes
-    }
-    //this.$store.dispatch('getCategorys', newId)
-  },
-  data() {
-    return {
-      list: []
-    }
+    console.log('$route.params', this.$route.params)
   },
   computed: {
     kafes() {
@@ -84,6 +63,28 @@ export default {
     },
     loadingProducts() {
       return this.$store.getters.loadingProducts
+    },
+    list() {
+      if (this.$route.params.kafe) {
+        if (this.$route.params.kafe.length === 1) {
+          return this.categorys
+        } else if (this.$route.params.kafe.length === 2) {
+          return this.products
+        }
+      } else {
+        return this.kafes
+      }
+    },
+    type() {
+      if (this.$route.params.kafe) {
+        if (this.$route.params.kafe.length === 1) {
+          return 'categoryId'
+        } else if (this.$route.params.kafe.length === 2) {
+          return 'productId'
+        }
+      } else {
+        return 'kafeId'
+      }
     }
   },
   created() {
@@ -91,28 +92,57 @@ export default {
       () => this.$route.params,
       (newParams, previousParams) => {
         // react to route changes...
-        console.log('wc newParams:', newParams)
-        let kafeId = this.kafes.find(item => item.alias === newParams.kafe).id
-        console.log('wc kafeId:', kafeId)
-        this.$store.dispatch('getCategorys', kafeId)
-        this.list = this.categorys
+        if (newParams.kafe) {
+          if (newParams.kafe.length === 1) {
+            console.log('wc[0] newParams:', newParams)
+            let kafeId = this.kafes.find(
+              item => item.alias === newParams.kafe[0]
+            ).id
+            console.log('wc[0] kafeId:', kafeId)
+            this.$store.dispatch('getCategorys', kafeId)
+          } else if (this.$route.params.kafe.length === 2) {
+            let kafeId = this.kafes.find(
+              item => item.alias === newParams.kafe[0]
+            ).id
+            let categoryId = this.categorys.find(
+              item => item.alias === newParams.kafe[1]
+            ).id
+            console.log('wc2[1] kafeId:', kafeId)
+            console.log('wc2[1] categoryId:', categoryId)
+            this.$store.dispatch('getProducts', {
+              kafeId,
+              categoryId
+            })
+          }
+        }
       }
     )
+  },
+  watch: {
+    kafes() {
+      if (this.$route.params.kafe) {
+        if (this.$route.params.kafe.length === 1) {
+          let kafeId = this.kafes.find(
+            item => item.alias === this.$route.params.kafe[0]
+          ).id
+          console.log('wc2[0] kafeId:', kafeId)
+          this.$store.dispatch('getCategorys', kafeId)
+        } else if (this.$route.params.kafe.length === 2) {
+          let kafeId = this.kafes.find(
+            item => item.alias === this.$route.params.kafe[0]
+          ).id
+          let categoryId = this.categorys.find(
+            item => item.alias === this.$route.params.kafe[1]
+          ).id
+          console.log('wc2[1] kafeId:', kafeId)
+          console.log('wc2[1] categoryId:', categoryId)
+          this.$store.dispatch('getProducts', {
+            kafeId,
+            categoryId
+          })
+        }
+      }
+    }
   }
 }
 </script>
-
-<style scoped>
-.card {
-  transition: 0.3s ease;
-}
-
-.card:hover {
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
-}
-
-.stretched-link {
-  color: #212529;
-  text-decoration: none;
-}
-</style>

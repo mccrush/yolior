@@ -28,20 +28,20 @@ const router = createRouter({
       component: () => import('../views/Login.vue')
     },
     {
-      path: '/:kafe',
+      path: '/:kafe+',
       name: 'razdel',
       component: () => import('../views/Index.vue')
     },
-    {
-      path: '/:kafe/:category',
-      name: 'page',
-      component: () => import('../views/Index.vue')
-    },
-    {
-      path: '/:kafe/:category/:product',
-      name: 'page',
-      component: () => import('../views/Index.vue')
-    },
+    // {
+    //   path: '/:kafe/cat/:category',
+    //   name: 'page',
+    //   component: () => import('../views/Index.vue')
+    // },
+    // {
+    //   path: '/:kafe/cat/:category/prod/:product',
+    //   name: 'page',
+    //   component: () => import('../views/Index.vue')
+    // },
     {
       path: '/:catchAll(.*)',
       name: 'notfound',
