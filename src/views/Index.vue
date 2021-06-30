@@ -5,7 +5,8 @@
         1. Выберите кафе &#8250; 2. Выберите категорию &#8250; 3. Выбериет блюдо
       </h4>
       <hr />
-      <div class="row row-cols-1 row-cols-md-3 g-4">
+      <LoadingAnimate v-if="loadingKafes" />
+      <div v-else class="row row-cols-1 row-cols-md-3 g-4">
         <div v-for="item in list" :key="item.id" class="col">
           <div class="card shadow-sm border-0 h-100">
             <img
@@ -31,7 +32,30 @@
 </template>
 
 <script>
+import LoadingAnimate from '@/components/LoadingAnimate'
+
 export default {
+  components: {
+    LoadingAnimate
+  },
+  beforeMount() {
+    if (this.$route.params.kafe) {
+      let kafeId = this.kafes.find(
+        item => item.alias === this.$route.params.kafe
+      )
+      console.log('bm kafeId:', kafeId)
+      // this.$store.dispatch('getCategorys', kafeId)
+      // this.list = this.categorys
+    } else {
+      this.list = this.kafes
+    }
+    //this.$store.dispatch('getCategorys', newId)
+  },
+  data() {
+    return {
+      list: []
+    }
+  },
   computed: {
     kafes() {
       return this.$store.getters.kafes
@@ -42,15 +66,28 @@ export default {
     products() {
       return this.$store.getters.products
     },
-    list() {
-      if (this.$route.params.kafe) {
-        return this.categorys
-      } else if (this.$route.params.kafe.category) {
-        return this.products
-      } else {
-        return this.kafes
-      }
+    loadingKafes() {
+      return this.$store.getters.loadingKafes
+    },
+    loadingCategorys() {
+      return this.$store.getters.loadingCategorys
+    },
+    loadingProducts() {
+      return this.$store.getters.loadingProducts
     }
+  },
+  created() {
+    this.$watch(
+      () => this.$route.params,
+      (newParams, previousParams) => {
+        // react to route changes...
+        console.log('wc newParams:', newParams)
+        let kafeId = this.kafes.find(item => item.alias === newParams.kafe).id
+        console.log('wc kafeId:', kafeId)
+        this.$store.dispatch('getCategorys', kafeId)
+        this.list = this.categorys
+      }
+    )
   }
 }
 </script>
