@@ -27,16 +27,21 @@ const router = createRouter({
       name: 'login',
       component: () => import('../views/Login.vue')
     },
-    // {
-    //   path: '/:razdel',
-    //   name: 'razdel',
-    //   component: () => import('../views/Razdel.vue')
-    // },
-    // {
-    //   path: '/:razdel/:page',
-    //   name: 'page',
-    //   component: () => import('../views/Page.vue')
-    // },
+    {
+      path: '/:kafe',
+      name: 'razdel',
+      component: () => import('../views/Index.vue')
+    },
+    {
+      path: '/:kafe/:category',
+      name: 'page',
+      component: () => import('../views/Index.vue')
+    },
+    {
+      path: '/:kafe/:category/:product',
+      name: 'page',
+      component: () => import('../views/Index.vue')
+    },
     {
       path: '/:catchAll(.*)',
       name: 'notfound',
