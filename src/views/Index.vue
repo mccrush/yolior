@@ -1,9 +1,19 @@
 <template>
   <div class="row ps-2 pe-2 pb-3">
     <div class="col-12">
-      <h4>
-        1. Выберите кафе &#8250; 2. Выберите категорию &#8250; 3. Выбериет блюдо
-      </h4>
+      <div class="d-flex justify-content-between">
+        <h5 class="shadow-sm ps-4 pt-2 pe-4 pb-2 rounded-3">
+          1. Выберите кафе
+        </h5>
+        <h2 class="">&#8250;</h2>
+        <h5 class="shadow-sm ps-4 pt-2 pe-4 pb-2 rounded-3">
+          2. Выбериет блюдо
+        </h5>
+        <h2 class="">&#8250;</h2>
+        <h5 class="shadow-sm ps-4 pt-2 pe-4 pb-2 rounded-3">
+          3. Сделайте заказ
+        </h5>
+      </div>
       <hr />
       <LoadingAnimate v-if="loadingKafes" />
       <div v-else class="row row-cols-1 row-cols-md-3 g-4">
