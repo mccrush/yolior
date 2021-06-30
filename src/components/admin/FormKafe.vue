@@ -19,6 +19,14 @@
       />
     </div>
     <div class="col-12 mt-1">
+      <input
+        type="text"
+        v-model.trim="phone"
+        class="form-control"
+        placeholder="Phone"
+      />
+    </div>
+    <div class="col-12 mt-1">
       <button
         type="button"
         class="btn btn-sm btn-success w-100"
@@ -44,6 +52,14 @@
         v-model.trim="item.alias"
         class="form-control"
         placeholder="Alias"
+      />
+    </div>
+    <div class="col-12 mt-1">
+      <input
+        type="text"
+        v-model.trim="item.phone"
+        class="form-control"
+        placeholder="Phone"
       />
     </div>
     <div class="col-12 mt-1">
@@ -73,7 +89,8 @@ export default {
   data() {
     return {
       title: '',
-      alias: ''
+      alias: '',
+      phone: ''
     }
   },
   methods: {
@@ -82,12 +99,14 @@ export default {
         const item = {
           id: Date.now().toString(),
           title: this.title,
-          alias: this.alias
+          alias: this.alias,
+          phone: this.phone
         }
 
         this.$store.commit('addKafe', item)
         this.title = ''
         this.alias = ''
+        this.phone = ''
         const res = await this.$store.dispatch('addKafe', item)
         if (res) {
           this.$store.commit('addMessage', 'das')
