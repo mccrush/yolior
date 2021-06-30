@@ -61,7 +61,11 @@ export default {
         })
       } else if (this.type === 'productId') {
         this.$store.commit('removeProduct', id)
-        res = await this.$store.dispatch('removeProduct', id)
+        res = await this.$store.dispatch('removeProduct', {
+          id,
+          kafeId: this.kafeId,
+          categoryId: this.categoryId
+        })
       }
 
       if (res) {

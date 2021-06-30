@@ -156,6 +156,7 @@ export default {
     },
     kafeId(newId) {
       this.$store.dispatch('getCategorys', newId)
+      this.$store.commit('getProducts', [])
     },
     categoryId(newId) {
       this.$store.dispatch('getProducts', {
