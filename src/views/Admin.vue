@@ -157,12 +157,17 @@ export default {
     kafeId(newId) {
       this.$store.dispatch('getCategorys', newId)
       this.$store.commit('getProducts', [])
+      this.$store.commit('setValue', { type: 'categoryId', id: '' })
+      this.$store.commit('setValue', { type: 'productId', id: '' })
     },
     categoryId(newId) {
-      this.$store.dispatch('getProducts', {
-        kafeId: this.kafeId,
-        categoryId: newId
-      })
+      if (newId) {
+        this.$store.dispatch('getProducts', {
+          kafeId: this.kafeId,
+          categoryId: newId
+        })
+        this.$store.commit('setValue', { type: 'productId', id: '' })
+      }
     },
     categorys() {
       this.category = null
