@@ -32,7 +32,25 @@
             @edit-item="editCategory"
           />
         </div>
-        <div class="col-4"></div>
+        <div class="col-4">
+          <h4 class="text-center">Product</h4>
+          <FormProduct
+            :item="product"
+            :kafeId="kafeId"
+            :categoryId="categoryId"
+            @clear-item="product = null"
+          />
+          <hr />
+          <LoadingAnimate v-if="loadingProducts" />
+          <ListItems
+            v-else
+            :list="products"
+            type="categoryId"
+            :kafeId="kafeId"
+            :categoryId="categoryId"
+            @edit-item="editProduct"
+          />
+        </div>
       </div>
     </div>
     <transition name="slide-fade">
@@ -48,6 +66,7 @@
 <script>
 import FormKafe from '@/components/admin/FormKafe'
 import FormCategory from '@/components/admin/FormCategory'
+import FormProduct from '@/components/admin/FormProduct'
 import ListItems from '@/components/admin/ListItems'
 import Message from '@/components/Message'
 import LoadingAnimate from '@/components/LoadingAnimate'
@@ -56,6 +75,7 @@ export default {
   components: {
     FormKafe,
     FormCategory,
+    FormProduct,
     ListItems,
     Message,
     LoadingAnimate
@@ -64,7 +84,8 @@ export default {
     return {
       showMessage: false,
       kafe: null,
-      category: null
+      category: null,
+      product: null
     }
   },
   computed: {
@@ -77,6 +98,12 @@ export default {
     categorys() {
       return this.$store.getters.categorys
     },
+    categoryId() {
+      return this.$store.getters.categoryId
+    },
+    products() {
+      return this.$store.getters.products
+    },
     message() {
       return this.$store.getters.getMessage || ''
     },
@@ -85,11 +112,20 @@ export default {
     },
     loadingCategorys() {
       return this.$store.getters.loadingCategorys
+    },
+    loadingProducts() {
+      return this.$store.getters.loadingProducts
     }
   },
   beforeMount() {
     if (this.kafeId) {
       this.$store.dispatch('getCategorys', this.kafeId)
+    }
+    if (this.categoryId) {
+      this.$store.dispatch('getProducts', {
+        kafeId: this.kafeId,
+        categoryId: this.categoryId
+      })
     }
   },
   methods: {
@@ -98,6 +134,9 @@ export default {
     },
     editCategory(id) {
       this.category = this.categorys.find(item => item.id === id)
+    },
+    editProduct(id) {
+      this.product = this.products.find(item => item.id === id)
     }
   },
   watch: {
@@ -113,8 +152,17 @@ export default {
     kafeId(newId) {
       this.$store.dispatch('getCategorys', newId)
     },
+    categoryId(newId) {
+      this.$store.dispatch('getgetProducts', {
+        kafeId: this.kafeId,
+        categoryId: newId
+      })
+    },
     categorys() {
       this.category = null
+    },
+    products() {
+      this.product = null
     }
   }
 }
