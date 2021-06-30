@@ -3,10 +3,10 @@ import { db } from '@/firebase'
 export default {
   state: {
     products: [],
-    loadingproducts: false
+    loadingProducts: false
   },
   mutations: {
-    getproducts(state, products) {
+    getProducts(state, products) {
       state.products = products
     },
     addProduct(state, item) {

@@ -29,6 +29,7 @@
             :list="categorys"
             type="categoryId"
             :kafeId="kafeId"
+            :categoryId="categoryId"
             @edit-item="editCategory"
           />
         </div>
@@ -45,9 +46,10 @@
           <ListItems
             v-else
             :list="products"
-            type="categoryId"
+            type="productId"
             :kafeId="kafeId"
             :categoryId="categoryId"
+            :productId="productId"
             @edit-item="editProduct"
           />
         </div>
@@ -104,6 +106,9 @@ export default {
     products() {
       return this.$store.getters.products
     },
+    productId() {
+      return this.$store.getters.productId
+    },
     message() {
       return this.$store.getters.getMessage || ''
     },
@@ -153,7 +158,7 @@ export default {
       this.$store.dispatch('getCategorys', newId)
     },
     categoryId(newId) {
-      this.$store.dispatch('getgetProducts', {
+      this.$store.dispatch('getProducts', {
         kafeId: this.kafeId,
         categoryId: newId
       })

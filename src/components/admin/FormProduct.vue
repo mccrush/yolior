@@ -117,11 +117,11 @@ export default {
           categoryId: this.categoryId
         }
 
-        this.$store.commit('addCategory', item)
+        this.$store.commit('addProduct', item)
         this.title = ''
         this.alias = ''
         this.price = 0
-        const res = await this.$store.dispatch('addCategory', {
+        const res = await this.$store.dispatch('addProduct', {
           item,
           kafeId: this.kafeId,
           categoryId: this.categoryId
@@ -135,7 +135,7 @@ export default {
     },
     async updateItem() {
       if (this.item.title && this.item.alias) {
-        const res = await this.$store.dispatch('updateCategory', {
+        const res = await this.$store.dispatch('updateProduct', {
           id: this.item.id,
           kafeId: this.kafeId,
           categoryId: this.categoryId

@@ -12,7 +12,12 @@
         lh-1
       "
       @click="setItemId(item.id)"
-      :class="{ active: item.id === kafeId }"
+      :class="{
+        active:
+          (type === 'kafeId' && item.id === kafeId) ||
+          (type === 'categoryId' && item.id === categoryId) ||
+          (type === 'productId' && item.id === productId)
+      }"
     >
       {{ item.title }}
       <div class="btns btn-group">
@@ -38,7 +43,9 @@ export default {
   props: {
     list: Array,
     type: String,
-    kafeId: String
+    kafeId: String,
+    categoryId: String,
+    productId: String
   },
   methods: {
     async removeItem(id) {
