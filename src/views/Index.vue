@@ -1,33 +1,24 @@
 <template>
   <div class="row ps-2 pe-2 pb-3">
     <div class="col-12">
-      <div class="d-flex justify-content-between">
-        <h5 class="shadow-sm ps-4 pt-2 pe-4 pb-2 rounded-3">
+      <div class="d-flex justify-content-between mt-2">
+        <h5 class="shadow-sm ps-3 pt-2 pe-3 pb-2 rounded-3">
           1. Выберите кафе
         </h5>
         <h2 class="">&#8250;</h2>
-        <h5 class="shadow-sm ps-4 pt-2 pe-4 pb-2 rounded-3">
-          2. Выбериет блюдо
-        </h5>
+        <h5 class="shadow-sm ps-3 pt-2 pe-3 pb-2 rounded-3">2. Категорию</h5>
         <h2 class="">&#8250;</h2>
-        <h5 class="shadow-sm ps-4 pt-2 pe-4 pb-2 rounded-3">
-          3. Сделайте заказ
+        <h5 class="shadow-sm ps-3 pt-2 pe-3 pb-2 rounded-3">3. Блюдо</h5>
+        <h2 class="">&#8250;</h2>
+        <h5 class="shadow-sm ps-3 pt-2 pe-3 pb-2 rounded-3">
+          4. Сделайте заказ
         </h5>
       </div>
       <hr />
       <LoadingAnimate v-if="loadingKafes" />
       <LoadingAnimate v-if="loadingCategorys" />
       <LoadingAnimate v-if="loadingProducts" />
-      <!-- <ListKafes
-        v-if="$route.params.kafe.length === 2"
-        :list="products"
-        type="productId"
-      />
-      <ListKafes
-        v-if="$route.params.kafe.length === 1"
-        :list="categorys"
-        type="categoryId"
-      /> -->
+
       <ListKafes v-else :list="list" :type="type" />
     </div>
   </div>
@@ -127,20 +118,23 @@ export default {
           ).id
           console.log('wc2[0] kafeId:', kafeId)
           this.$store.dispatch('getCategorys', kafeId)
-        } else if (this.$route.params.kafe.length === 2) {
-          let kafeId = this.kafes.find(
-            item => item.alias === this.$route.params.kafe[0]
-          ).id
-          let categoryId = this.categorys.find(
-            item => item.alias === this.$route.params.kafe[1]
-          ).id
-          console.log('wc2[1] kafeId:', kafeId)
-          console.log('wc2[1] categoryId:', categoryId)
-          this.$store.dispatch('getProducts', {
-            kafeId,
-            categoryId
-          })
         }
+      }
+    },
+    categorys() {
+      if (this.$route.params.kafe.length === 2) {
+        let kafeId = this.kafes.find(
+          item => item.alias === this.$route.params.kafe[0]
+        ).id
+        let categoryId = this.categorys.find(
+          item => item.alias === this.$route.params.kafe[1]
+        ).id
+        console.log('wc2[1] kafeId:', kafeId)
+        console.log('wc2[1] categoryId:', categoryId)
+        this.$store.dispatch('getProducts', {
+          kafeId,
+          categoryId
+        })
       }
     }
   }
