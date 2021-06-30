@@ -20,19 +20,24 @@
       }"
     >
       {{ item.title }}
-      <div class="btns btn-group">
-        <button
-          class="btn btn-sm btn-outline-secondary p-0 ps-1 pe-1"
-          @click.self="$emit('edit-item', item.id)"
-        >
-          Edit
-        </button>
-        <button
-          class="btn btn-sm btn-outline-secondary p-0 ps-1 pe-1"
-          @click="removeItem(item.id)"
-        >
-          Del
-        </button>
+      <div>
+        <div class="btns btn-group">
+          <button
+            class="btn btn-sm btn-outline-secondary p-0 ps-1 pe-1"
+            @click.self="$emit('edit-item', item.id)"
+          >
+            Edit
+          </button>
+          <button
+            class="btn btn-sm btn-outline-secondary p-0 ps-1 pe-1"
+            @click="removeItem(item.id)"
+          >
+            Del
+          </button>
+        </div>
+        <div class="price d-inline ms-1" v-if="type === 'productId'">
+          <span class="badge bg-success">{{ item.price }}</span>
+        </div>
       </div>
     </button>
   </div>

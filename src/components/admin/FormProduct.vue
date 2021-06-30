@@ -102,7 +102,7 @@ export default {
     return {
       title: '',
       alias: '',
-      price: 0
+      price: ''
     }
   },
   methods: {
