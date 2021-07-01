@@ -33,9 +33,6 @@ export default {
     ListKafes,
     LoadingAnimate
   },
-  beforeMount() {
-    console.log('$route.params', this.$route.params)
-  },
   computed: {
     kafes() {
       return this.$store.getters.kafes
@@ -54,6 +51,24 @@ export default {
     },
     loadingProducts() {
       return this.$store.getters.loadingProducts
+    },
+    kafeId() {
+      if (this.$route.params.kafe) {
+        return this.kafes.find(
+          item => item.alias === this.$route.params.kafe[0]
+        ).id
+      } else {
+        return ''
+      }
+    },
+    categoryId() {
+      if (this.$route.params.kafe) {
+        return this.category.find(
+          item => item.alias === this.$route.params.kafe[1]
+        ).id
+      } else {
+        return ''
+      }
     },
     list() {
       if (this.$route.params.kafe) {
@@ -79,27 +94,36 @@ export default {
     }
   },
   created() {
+    if (this.$route.params.kafe) {
+      if (this.$route.params.kafe.length === 1) {
+        this.$store.dispatch('getCategorys', this.kafeId)
+      }
+
+      if (this.$route.params.kafe.length === 2) {
+        this.$store.dispatch('getProducts', {
+          kafeId: this.kafeId,
+          categoryId: this.categoryId
+        })
+      }
+    }
+
     this.$watch(
       () => this.$route.params,
       (newParams, previousParams) => {
         // react to route changes...
         if (newParams.kafe) {
+          let kafeId = this.kafes.find(
+            item => item.alias === newParams.kafe[0]
+          ).id
+
           if (newParams.kafe.length === 1) {
-            console.log('wc[0] newParams:', newParams)
-            let kafeId = this.kafes.find(
-              item => item.alias === newParams.kafe[0]
-            ).id
-            console.log('wc[0] kafeId:', kafeId)
             this.$store.dispatch('getCategorys', kafeId)
-          } else if (this.$route.params.kafe.length === 2) {
-            let kafeId = this.kafes.find(
-              item => item.alias === newParams.kafe[0]
-            ).id
+          }
+
+          if (newParams.kafe.length === 2) {
             let categoryId = this.categorys.find(
               item => item.alias === newParams.kafe[1]
             ).id
-            console.log('wc2[1] kafeId:', kafeId)
-            console.log('wc2[1] categoryId:', categoryId)
             this.$store.dispatch('getProducts', {
               kafeId,
               categoryId
@@ -108,35 +132,35 @@ export default {
         }
       }
     )
-  },
-  watch: {
-    kafes() {
-      if (this.$route.params.kafe) {
-        if (this.$route.params.kafe.length === 1) {
-          let kafeId = this.kafes.find(
-            item => item.alias === this.$route.params.kafe[0]
-          ).id
-          console.log('wc2[0] kafeId:', kafeId)
-          this.$store.dispatch('getCategorys', kafeId)
-        }
-      }
-    },
-    categorys() {
-      if (this.$route.params.kafe.length === 2) {
-        let kafeId = this.kafes.find(
-          item => item.alias === this.$route.params.kafe[0]
-        ).id
-        let categoryId = this.categorys.find(
-          item => item.alias === this.$route.params.kafe[1]
-        ).id
-        console.log('wc2[1] kafeId:', kafeId)
-        console.log('wc2[1] categoryId:', categoryId)
-        this.$store.dispatch('getProducts', {
-          kafeId,
-          categoryId
-        })
-      }
-    }
   }
+  // watch: {
+  //   kafes() {
+  //     if (this.$route.params) {
+  //       if (this.$route.params.kafe.length === 1) {
+  //         let kafeId = this.kafes.find(
+  //           item => item.alias === this.$route.params.kafe[0]
+  //         ).id
+  //         console.log('wc2[0] kafeId:', kafeId)
+  //         this.$store.dispatch('getCategorys', kafeId)
+  //       }
+  //     }
+  //   },
+  //   categorys() {
+  //     if (this.$route.params.kafe.length === 2) {
+  //       let kafeId = this.kafes.find(
+  //         item => item.alias === this.$route.params.kafe[0]
+  //       ).id
+  //       let categoryId = this.categorys.find(
+  //         item => item.alias === this.$route.params.kafe[1]
+  //       ).id
+  //       console.log('wc2[1] kafeId:', kafeId)
+  //       console.log('wc2[1] categoryId:', categoryId)
+  //       this.$store.dispatch('getProducts', {
+  //         kafeId,
+  //         categoryId
+  //       })
+  //     }
+  //   }
+  // }
 }
 </script>
