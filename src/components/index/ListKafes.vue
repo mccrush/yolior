@@ -15,7 +15,7 @@
           <div v-if="type === 'productId'">
             <p class="card-text">
               <small>Описание для Продуктов</small><br />
-              <span class="badge bg-light text-dark"> {{ item.price }} ₽</span>
+              <span class="badge bg-success"> {{ item.price }} ₽</span>
             </p>
           </div>
         </div>
