@@ -20,7 +20,7 @@
         :disabled="!categoryId"
       />
     </div>
-    <div class="col-12 mt-1">
+    <div class="col-6 mt-1 pe-0">
       <input
         type="number"
         min="0"
@@ -29,6 +29,33 @@
         v-model.number="price"
         class="form-control"
         placeholder="Price"
+        :disabled="!categoryId"
+      />
+    </div>
+    <div class="col-6 mt-1 ps-1">
+      <input
+        type="text"
+        v-model.trim="weight"
+        class="form-control"
+        placeholder="Weight"
+        :disabled="!categoryId"
+      />
+    </div>
+    <div class="col-6 mt-1 pe-0">
+      <input
+        type="text"
+        v-model.trim="amount"
+        class="form-control"
+        placeholder="Amount"
+        :disabled="!categoryId"
+      />
+    </div>
+    <div class="col-6 mt-1 ps-1">
+      <input
+        type="text"
+        v-model.trim="volume"
+        class="form-control"
+        placeholder="Volume"
         :disabled="!categoryId"
       />
     </div>
@@ -61,7 +88,7 @@
         placeholder="Alias"
       />
     </div>
-    <div class="col-12 mt-1">
+    <div class="col-6 mt-1 pe-0">
       <input
         type="number"
         min="0"
@@ -70,6 +97,34 @@
         v-model.number="item.price"
         class="form-control"
         placeholder="Price"
+        :disabled="!categoryId"
+      />
+    </div>
+    <div class="col-6 mt-1 ps-1">
+      <input
+        type="text"
+        v-model.trim="item.weight"
+        class="form-control"
+        placeholder="Weight"
+        :disabled="!categoryId"
+      />
+    </div>
+    <div class="col-6 mt-1 pe-0">
+      <input
+        type="text"
+        v-model.trim="item.amount"
+        class="form-control"
+        placeholder="Amount"
+        :disabled="!categoryId"
+      />
+    </div>
+    <div class="col-6 mt-1 ps-1">
+      <input
+        type="text"
+        v-model.trim="item.volume"
+        class="form-control"
+        placeholder="Volume"
+        :disabled="!categoryId"
       />
     </div>
     <div class="col-12 mt-1">
@@ -102,7 +157,10 @@ export default {
     return {
       title: '',
       alias: '',
-      price: ''
+      price: '',
+      weight: '',
+      amount: '',
+      volume: ''
     }
   },
   methods: {
@@ -113,6 +171,9 @@ export default {
           title: this.title,
           alias: this.alias,
           price: this.price,
+          weight: this.weight,
+          amount: this.amount,
+          volume: this.volume,
           kafeId: this.kafeId,
           categoryId: this.categoryId
         }
@@ -120,7 +181,10 @@ export default {
         this.$store.commit('addProduct', item)
         this.title = ''
         this.alias = ''
-        this.price = 0
+        this.price = ''
+        this.weight = ''
+        this.amount = ''
+        this.volume = ''
         const res = await this.$store.dispatch('addProduct', {
           item,
           kafeId: this.kafeId,
