@@ -8,20 +8,6 @@
           class="card-img-top"
           :alt="item.title"
         />
-        <img
-          v-else-if="type === 'categoryId'"
-          :src="
-            '/img/' + $route.params.kafe[0] + '/' + item.alias + '/main.jpg'
-          "
-          class="card-img-top"
-          :alt="item.title"
-        />
-        <img
-          v-if="type === 'productId'"
-          :src="'/img/' + item.alias + '/main.jpg'"
-          class="card-img-top"
-          :alt="item.title"
-        />
         <div class="card-body">
           <h5 class="card-title">
             {{ item.title }}
@@ -31,10 +17,14 @@
               <small>Описание для Продуктов</small><br />
               <span class="badge bg-light text-dark"> {{ item.price }} ₽</span>
             </p>
-            <button class="btn btn-light w-100">Подробнее</button>
-            <button class="btn btn-success w-100 mt-2">В корзину</button>
           </div>
         </div>
+        <button
+          v-if="type === 'productId'"
+          class="btn btn-warning rounded-0 rounded-bottom w-100 mt-2 pt-3 pb-3"
+        >
+          В корзину
+        </button>
       </div>
     </div>
   </div>

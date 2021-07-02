@@ -18,7 +18,7 @@
       <LoadingAnimate
         v-if="loadingKafes || loadingCategorys || loadingProducts"
       />
-      <ListKafes v-else :list="list" :type="type" />
+      <ListKafes :list="list" :type="type" />
     </div>
   </div>
 </template>
