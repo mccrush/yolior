@@ -1,5 +1,5 @@
 <template>
-  <div class="mt-3">
+  <div class="mt-3 mb-4">
     <div class="d-flex justify-content-between align-items-center">
       <!-- <h5>{{ kafeId }}</h5> -->
       <h5 class="m-0">{{ kafe.title }}</h5>
@@ -31,8 +31,16 @@
           <span v-if="item.volume" class="badge bg-light text-dark me-2">
             {{ item.volume }} л</span
           >
-          <span class="badge bg-success">{{ item.price }} ₽</span>
+          <span class="badge bg-light text-success border border-success"
+            >{{ item.price }} ₽</span
+          >
         </div>
+      </div>
+    </div>
+    <div class="d-flex justify-content-end pt-1 pe-3">
+      <div>
+        Общая сумма заказа
+        <span class="badge bg-success ms-1">{{ totalSum }} ₽</span>
       </div>
     </div>
   </div>
@@ -48,11 +56,17 @@ export default {
     kafes() {
       return this.$store.getters.kafes
     },
+    kafe() {
+      return this.kafes.find(item => item.id === this.kafeId)
+    },
     products() {
       return this.basket.filter(item => item.kafeId === this.kafeId)
     },
-    kafe() {
-      return this.kafes.find(item => item.id === this.kafeId)
+    totalSum() {
+      return this.products.reduce(
+        (accumulator, currentValue) => accumulator + currentValue.price,
+        0
+      )
     }
   }
 }

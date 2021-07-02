@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-12">
       <div>
-        <div v-for="el in basketKafes" :key="el" class="mb-2">
+        <div v-for="el in basketKafes" :key="el">
           <ListOrder :kafeId="el" :basket="basket" />
         </div>
       </div>

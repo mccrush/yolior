@@ -24,7 +24,9 @@
               <span v-if="item.volume" class="badge bg-light text-dark me-2">
                 {{ item.volume }} л</span
               >
-              <span class="badge bg-success"> {{ item.price }} ₽</span>
+              <span class="badge bg-light text-success border border-success">
+                {{ item.price }} ₽</span
+              >
             </p>
           </div>
         </div>
