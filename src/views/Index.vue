@@ -2,17 +2,39 @@
   <div class="row ps-2 pe-2 pb-3">
     <div class="col-12">
       <div class="d-flex justify-content-between mt-2">
-        <h5 class="shadow-sm ps-3 pt-2 pe-3 pb-2 rounded-3">
-          1. Выберите кафе
-        </h5>
+        <button
+          class="btn shadow-sm p-0"
+          @click="showKafes"
+          :class="{
+            active: type === 'kafeId'
+          }"
+        >
+          <h5 class="m-0 ps-3 pe-3 pt-2 pb-2">1. Выберите кафе</h5>
+        </button>
         <h2 class="">&#8250;</h2>
-        <h5 class="shadow-sm ps-3 pt-2 pe-3 pb-2 rounded-3">2. Категорию</h5>
+        <button
+          class="btn shadow-sm p-0"
+          @click="showCategorys"
+          :class="{
+            active: type === 'categoryId'
+          }"
+        >
+          <h5 class="m-0 ps-3 pe-3 pt-2 pb-2">2. Категорию</h5>
+        </button>
         <h2 class="">&#8250;</h2>
-        <h5 class="shadow-sm ps-3 pt-2 pe-3 pb-2 rounded-3">3. Блюдо</h5>
+        <button
+          class="btn shadow-sm p-0"
+          @click="showProducts"
+          :class="{
+            active: type === 'productId'
+          }"
+        >
+          <h5 class="m-0 ps-3 pe-3 pt-2 pb-2">3. Блюдо</h5>
+        </button>
         <h2 class="">&#8250;</h2>
-        <h5 class="shadow-sm ps-3 pt-2 pe-3 pb-2 rounded-3">
-          4. Сделайте заказ
-        </h5>
+        <button class="btn shadow-sm p-0" @click="showBasket">
+          <h5 class="m-0 ps-3 pe-3 pt-2 pb-2">4. Сделайте заказ</h5>
+        </button>
       </div>
       <hr />
       <LoadingAnimate
@@ -47,6 +69,9 @@ export default {
     },
     products() {
       return this.$store.getters.products
+    },
+    productId() {
+      return this.$store.getters.productId
     },
     loadingKafes() {
       return this.$store.getters.loadingKafes
@@ -92,12 +117,28 @@ export default {
       })
     }
   },
-  watch: {
-    kafeId(newId) {
-      this.$store.dispatch('getCategorys', newId)
-      this.$store.commit('getProducts', [])
+  methods: {
+    showKafes() {
+      this.$store.commit('setValue', { type: 'kafeId', id: '' })
       this.$store.commit('setValue', { type: 'categoryId', id: '' })
       this.$store.commit('setValue', { type: 'productId', id: '' })
+    },
+    showCategorys() {
+      this.$store.commit('setValue', { type: 'categoryId', id: '' })
+      this.$store.commit('setValue', { type: 'productId', id: '' })
+    },
+    showProducts() {
+      this.$store.commit('setValue', { type: 'productId', id: '' })
+    }
+  },
+  watch: {
+    kafeId(newId) {
+      if (newId) {
+        this.$store.dispatch('getCategorys', newId)
+        this.$store.commit('getProducts', [])
+        this.$store.commit('setValue', { type: 'categoryId', id: '' })
+        this.$store.commit('setValue', { type: 'productId', id: '' })
+      }
     },
     categoryId(newId) {
       if (newId) {
@@ -117,3 +158,10 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.btn.active {
+  border: 1px solid #ffc107;
+  /* background: #20c997; */
+}
+</style>
