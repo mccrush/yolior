@@ -4,7 +4,7 @@
       class="btn shadow-sm p-0"
       @click="showKafes"
       :class="{
-        active: type === 'kafeId'
+        active: type === 'kafeId' && !showBasket
       }"
     >
       <h5 class="m-0 ps-3 pe-3 pt-2 pb-2">1. Выберите кафе</h5>
@@ -14,7 +14,7 @@
       class="btn shadow-sm p-0"
       @click="showCategorys"
       :class="{
-        active: type === 'categoryId'
+        active: type === 'categoryId' && !showBasket
       }"
       :disabled="!kafeId"
     >
@@ -25,7 +25,7 @@
       class="btn shadow-sm p-0"
       @click="showProducts"
       :class="{
-        active: type === 'productId'
+        active: type === 'productId' && !showBasket
       }"
       :disabled="!categoryId"
     >
@@ -34,7 +34,10 @@
     <h2 class="">&#8250;</h2>
     <button
       class="btn shadow-sm p-0 position-relative"
-      @click="showBasket"
+      @click="setShowBasket"
+      :class="{
+        active: showBasket
+      }"
       :disabled="!basket.length"
     >
       <h5 class="m-0 ps-3 pe-3 pt-2 pb-2">4. Сделайте заказ</h5>
@@ -64,7 +67,8 @@ export default {
     type: String,
     kafeId: String,
     categoryId: String,
-    productId: String
+    productId: String,
+    showBasket: String
   },
   computed: {
     basket() {
@@ -76,13 +80,19 @@ export default {
       this.$store.commit('setValue', { type: 'kafeId', id: '' })
       this.$store.commit('setValue', { type: 'categoryId', id: '' })
       this.$store.commit('setValue', { type: 'productId', id: '' })
+      this.$store.commit('setShowBasket', false)
     },
     showCategorys() {
       this.$store.commit('setValue', { type: 'categoryId', id: '' })
       this.$store.commit('setValue', { type: 'productId', id: '' })
+      this.$store.commit('setShowBasket', false)
     },
     showProducts() {
       this.$store.commit('setValue', { type: 'productId', id: '' })
+      this.$store.commit('setShowBasket', false)
+    },
+    setShowBasket() {
+      this.$store.commit('setShowBasket', true)
     }
   }
 }

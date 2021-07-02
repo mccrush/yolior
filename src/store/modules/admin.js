@@ -4,6 +4,7 @@ export default {
     categoryId: localStorage.getItem('categoryId') || '',
     productId: localStorage.getItem('productId') || '',
     basket: JSON.parse(localStorage.getItem('basket')) || [],
+    showBasket: localStorage.getItem('showBasket') || '',
   },
   mutations: {
     setValue(state, { type, id }) {
@@ -13,6 +14,10 @@ export default {
     addToBasket(state, product) {
       state.basket.push(product)
       localStorage.setItem('basket', JSON.stringify(state.basket))
+    },
+    setShowBasket(state, value) {
+      state.showBasket = value
+      localStorage.setItem('showBasket', value)
     }
   },
   actions: {},
@@ -20,6 +25,7 @@ export default {
     kafeId: state => state.kafeId,
     categoryId: state => state.categoryId,
     productId: state => state.productId,
-    basket: state => state.basket
+    basket: state => state.basket,
+    showBasket: state => state.showBasket
   }
 }

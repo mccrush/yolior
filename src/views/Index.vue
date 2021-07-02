@@ -6,12 +6,16 @@
         :kafeId="kafeId"
         :categoryId="categoryId"
         :productId="productId"
+        :showBasket="showBasket"
       />
       <hr />
-      <LoadingAnimate
-        v-if="loadingKafes || loadingCategorys || loadingProducts"
-      />
-      <ListKafes v-else :list="list" :type="type" />
+      <div v-if="!showBasket">
+        <LoadingAnimate
+          v-if="loadingKafes || loadingCategorys || loadingProducts"
+        />
+        <ListKafes v-else :list="list" :type="type" />
+      </div>
+      <BasketBlock v-else />
     </div>
   </div>
 </template>
@@ -20,12 +24,14 @@
 import ListKafes from '@/components/index/ListKafes'
 import LoadingAnimate from '@/components/LoadingAnimate'
 import StepsBlock from '@/components/index/StepsBlock'
+import BasketBlock from '@/components/index/BasketBlock'
 
 export default {
   components: {
     ListKafes,
     LoadingAnimate,
-    StepsBlock
+    StepsBlock,
+    BasketBlock
   },
   computed: {
     kafes() {
@@ -54,6 +60,9 @@ export default {
     },
     loadingProducts() {
       return this.$store.getters.loadingProducts
+    },
+    showBasket() {
+      return this.$store.getters.showBasket
     },
     list() {
       if (this.kafeId) {
