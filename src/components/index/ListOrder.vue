@@ -21,12 +21,11 @@
       >
         <div>
           <span class="badge bg-white text-danger border border-danger me-2">
-            Пицца
+            {{ item.categoryTitle }}
           </span>
           {{ item.title }}
         </div>
         <div>
-          <span class="badge bg-light text-dark me-2">{{ item.kafeId }}</span>
           <span v-if="item.weight" class="badge bg-light text-dark me-2">
             {{ item.weight }} г</span
           >
