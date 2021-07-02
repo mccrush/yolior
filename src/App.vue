@@ -3,9 +3,13 @@
     <Navbar-block />
 
     <div class="max-width-780 container bg-white rounded-bottom pt-3">
-      <router-view v-slot="{ Component }">
+      <!-- <router-view v-slot="{ Component }">
         <component :is="Component" />
-      </router-view>
+      </router-view> -->
+
+      <transition name="fade" mode="out-in">
+        <component :is="myComponent" />
+      </transition>
 
       <Footer-block />
     </div>
@@ -15,15 +19,40 @@
 <script>
 import 'bootstrap/dist/css/bootstrap.min.css'
 import NavbarBlock from '@/components/NavbarBlock'
+import Index from '@/views/Index'
+import Login from '@/views/Login'
+import Admin from '@/views/Admin'
 import FooterBlock from '@/components/FooterBlock'
 
 export default {
   components: {
     NavbarBlock,
+    Index,
+    Login,
+    Admin,
     FooterBlock
   },
   data() {
     return {}
+  },
+  created() {
+    console.log(window.location)
+  },
+  computed: {
+    userId() {
+      return this.$store.getters.userId
+    },
+    myComponent() {
+      if (window.location.pathname === '/admin') {
+        if (this.userId) {
+          return 'Admin'
+        } else {
+          return 'Login'
+        }
+      } else {
+        return 'Index'
+      }
+    }
   }
 }
 </script>
@@ -55,5 +84,15 @@ body {
 .navbar-toggler:focus {
   outline: 0 !important;
   box-shadow: none !important;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
