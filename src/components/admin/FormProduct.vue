@@ -3,6 +3,15 @@
     <div class="col-12">
       <input
         type="text"
+        v-model.trim="categoryTitle"
+        class="form-control"
+        placeholder="Category title"
+        disabled
+      />
+    </div>
+    <div class="col-12 mt-1">
+      <input
+        type="text"
         v-model.trim="title"
         class="form-control"
         placeholder="Title"
@@ -72,6 +81,14 @@
   </div>
   <div v-if="item" class="row">
     <div class="col-12">
+      <input
+        type="text"
+        v-model.trim="item.categoryTitle"
+        class="form-control"
+        placeholder="Category title"
+      />
+    </div>
+    <div class="col-12 mt-1">
       <input
         type="text"
         v-model.trim="item.title"
@@ -150,7 +167,8 @@ export default {
   props: {
     item: Object,
     kafeId: String,
-    categoryId: String
+    categoryId: String,
+    categoryTitle: String
   },
   emits: ['clear-item'],
   data() {
@@ -175,7 +193,8 @@ export default {
           amount: this.amount,
           volume: this.volume,
           kafeId: this.kafeId,
-          categoryId: this.categoryId
+          categoryId: this.categoryId,
+          categoryTitle: this.categoryTitle
         }
 
         this.$store.commit('addProduct', item)

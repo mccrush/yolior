@@ -39,6 +39,7 @@
             :item="product"
             :kafeId="kafeId"
             :categoryId="categoryId"
+            :categoryTitle="categoryTitle"
             @clear-item="product = null"
           />
           <hr />
@@ -102,6 +103,13 @@ export default {
     },
     categoryId() {
       return this.$store.getters.categoryId
+    },
+    categoryTitle() {
+      if (this.categoryId) {
+        return this.categorys.find(item => item.id === this.categoryId).title
+      } else {
+        return ''
+      }
     },
     products() {
       return this.$store.getters.products
