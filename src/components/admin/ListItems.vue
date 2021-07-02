@@ -36,7 +36,7 @@
           </button>
         </div>
         <div class="price d-inline ms-1" v-if="type === 'productId'">
-          <span class="badge bg-success">{{ item.price }}</span>
+          <span class="badge bg-success">{{ item.price }} ₽</span>
         </div>
       </div>
     </button>
