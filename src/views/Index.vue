@@ -15,7 +15,10 @@
         />
         <ListKafes v-else :list="list" :type="type" />
       </div>
-      <BasketBlock v-else />
+      <div v-else>
+        <LoadingAnimate v-if="loadingKafes" />
+        <BasketBlock v-else />
+      </div>
     </div>
   </div>
 </template>
