@@ -30,7 +30,14 @@
         </div>
         <button
           v-if="type === 'productId'"
-          class="btn btn-warning rounded-0 rounded-bottom w-100 mt-2 pt-3 pb-3"
+          class="
+            btn btn-warning
+            rounded-0 rounded-bottom
+            text-white
+            w-100
+            pt-3
+            pb-3
+          "
         >
           В корзину
         </button>
@@ -56,6 +63,7 @@ export default {
 
 <style scoped>
 .card {
+  cursor: pointer;
   transition: 0.3s ease;
 }
 
