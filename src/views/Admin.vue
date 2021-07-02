@@ -122,7 +122,7 @@ export default {
       return this.$store.getters.loadingProducts
     }
   },
-  beforeMount() {
+  created() {
     if (this.kafeId) {
       this.$store.dispatch('getCategorys', this.kafeId)
     }
