@@ -35,16 +35,27 @@
           <span v-if="item.volume" class="badge bg-light text-dark me-2">
             {{ item.volume }} л</span
           >
-          <span class="badge bg-white text-success border border-success"
+          <span class="badge bg-white text-success border border-success me-2"
             >{{ item.price }} ₽</span
           >
+          <button
+            class="btn btn-sm btn-outline-danger lh-1 p-0 ps-2 pt-1 pb-1 pe-2"
+            @click="$emit('remove-product', item.id)"
+          >
+            &#215;
+          </button>
         </div>
       </div>
     </div>
     <div class="d-flex justify-content-end pt-1 pe-3">
       <div>
         Общая сумма заказа
-        <span class="badge bg-success ms-1">{{ totalSum }} ₽</span>
+        <span class="badge bg-success ms-1 me-2">{{ totalSum }} ₽</span>
+        <button
+          class="btn btn-sm btn-outline-danger lh-1 p-0 ps-2 pt-1 pb-1 pe-2"
+        >
+          &#215;
+        </button>
       </div>
     </div>
   </div>
