@@ -19,7 +19,12 @@
           lh-1
         "
       >
-        {{ item.title }}
+        <div>
+          <span class="badge bg-white text-danger border border-danger me-2">
+            Пицца
+          </span>
+          {{ item.title }}
+        </div>
         <div>
           <span class="badge bg-light text-dark me-2">{{ item.kafeId }}</span>
           <span v-if="item.weight" class="badge bg-light text-dark me-2">
@@ -31,7 +36,7 @@
           <span v-if="item.volume" class="badge bg-light text-dark me-2">
             {{ item.volume }} л</span
           >
-          <span class="badge bg-light text-success border border-success"
+          <span class="badge bg-white text-success border border-success"
             >{{ item.price }} ₽</span
           >
         </div>
@@ -63,10 +68,7 @@ export default {
       return this.basket.filter(item => item.kafeId === this.kafeId)
     },
     totalSum() {
-      return this.products.reduce(
-        (accumulator, currentValue) => accumulator + currentValue.price,
-        0
-      )
+      return this.products.reduce((accum, current) => accum + current.price, 0)
     }
   }
 }
