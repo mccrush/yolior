@@ -10,7 +10,7 @@
         />
         <strong>Yolior - заказ доставки в Славгороде</strong>
       </router-link>
-      <button
+      <!-- <button
         v-if="basket.length"
         type="button"
         class="btn btn-sm btn-light position-relative"
@@ -31,7 +31,7 @@
           {{ basket.length }}
           <span class="visually-hidden">Количество выбранных блюд</span>
         </span>
-      </button>
+      </button> -->
       <div v-if="pathname === '/admin'">
         <span v-if="userId" class="navbar-brand badge bg-success text-white"
           >Вы авторизованы</span
@@ -47,15 +47,12 @@ export default {
     userId() {
       return this.$store.getters.userId
     },
-    basket() {
-      return this.$store.getters.basket
-    },
+    // basket() {
+    //   return this.$store.getters.basket
+    // },
     pathname() {
       return window.location.pathname
     }
   }
 }
 </script>
-
-<style scoped>
-</style>

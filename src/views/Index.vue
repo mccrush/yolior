@@ -55,7 +55,6 @@ export default {
     loadingProducts() {
       return this.$store.getters.loadingProducts
     },
-
     list() {
       if (this.kafeId) {
         if (this.categoryId) {

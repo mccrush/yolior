@@ -38,6 +38,7 @@
             pt-3
             pb-3
           "
+          @click="addToBasket(item)"
         >
           В корзину
         </button>
@@ -55,6 +56,9 @@ export default {
   methods: {
     setItemId(id) {
       this.$store.commit('setValue', { type: this.type, id })
+    },
+    addToBasket(item) {
+      this.$store.commit('addToBasket', item)
     }
   }
 }
