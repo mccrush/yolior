@@ -9,15 +9,15 @@
         :showBasket="showBasket"
       />
       <hr />
-      <div v-if="!showBasket">
+      <div v-if="showBasket">
+        <LoadingAnimate v-if="loadingKafes" />
+        <BasketBlock v-if="kafes.length" />
+      </div>
+      <div v-else>
         <LoadingAnimate
           v-if="loadingKafes || loadingCategorys || loadingProducts"
         />
         <ListKafes v-else :list="list" :type="type" />
-      </div>
-      <div v-else>
-        <LoadingAnimate v-if="loadingKafes" />
-        <BasketBlock v-else />
       </div>
     </div>
   </div>

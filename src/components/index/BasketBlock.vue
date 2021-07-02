@@ -5,7 +5,7 @@
       ><br />
       <span>Список кафе</span>
       <div>
-        <div v-for="el in basketKafes" :key="el" class="border mb-2">
+        <div v-for="el in basketKafes" :key="el" class="mb-2">
           <ListOrder :kafeId="el" :basket="basket" />
         </div>
       </div>

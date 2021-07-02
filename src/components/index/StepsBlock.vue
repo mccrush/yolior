@@ -80,19 +80,19 @@ export default {
       this.$store.commit('setValue', { type: 'kafeId', id: '' })
       this.$store.commit('setValue', { type: 'categoryId', id: '' })
       this.$store.commit('setValue', { type: 'productId', id: '' })
-      this.$store.commit('setShowBasket', false)
+      this.$store.commit('setShowBasket', '')
     },
     showCategorys() {
       this.$store.commit('setValue', { type: 'categoryId', id: '' })
       this.$store.commit('setValue', { type: 'productId', id: '' })
-      this.$store.commit('setShowBasket', false)
+      this.$store.commit('setShowBasket', '')
     },
     showProducts() {
       this.$store.commit('setValue', { type: 'productId', id: '' })
-      this.$store.commit('setShowBasket', false)
+      this.$store.commit('setShowBasket', '')
     },
     setShowBasket() {
-      this.$store.commit('setShowBasket', true)
+      this.$store.commit('setShowBasket', 'show')
     }
   }
 }

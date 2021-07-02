@@ -1,12 +1,11 @@
 <template>
-  <div>
-    <LoadingAnimate v-if="loadingKafes" />
-    <div v-else class="d-flex justify-content-between align-items-center">
-      <h5>{{ kafeId }}</h5>
-      <!-- <h5>{{ kafe.title }}</h5>
-      <a :href="'tel:' + kafe.phone" class="btn btn-sm btn-warning"
-        >Позвонить в кафе</a
-      > -->
+  <div class="mt-3">
+    <div class="d-flex justify-content-between align-items-center">
+      <!-- <h5>{{ kafeId }}</h5> -->
+      <h5 class="m-0">{{ kafe.title }}</h5>
+      <a :href="'tel:' + kafe.phone" class="btn btn-warning text-white"
+        ><strong>Позвонить и заказать</strong></a
+      >
     </div>
     <div class="list-group mt-2">
       <button
@@ -32,22 +31,17 @@
 </template>
 
 <script>
-import LoadingAnimate from '@/components/LoadingAnimate'
-
 export default {
-  components: {
-    LoadingAnimate
-  },
   props: {
     kafeId: String,
     basket: Array
   },
   computed: {
-    products() {
-      return this.basket.filter(item => item.kafeId === this.kafeId)
-    },
     kafes() {
       return this.$store.getters.kafes
+    },
+    products() {
+      return this.basket.filter(item => item.kafeId === this.kafeId)
     },
     kafe() {
       return this.kafes.find(item => item.id === this.kafeId)
