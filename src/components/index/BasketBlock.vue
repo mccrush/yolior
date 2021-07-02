@@ -1,9 +1,6 @@
 <template>
   <div class="row">
     <div class="col-12">
-      <span>Сумма: {{ sumCafe }}</span
-      ><br />
-      <span>Список кафе</span>
       <div>
         <div v-for="el in basketKafes" :key="el" class="mb-2">
           <ListOrder :kafeId="el" :basket="basket" />
@@ -26,9 +23,6 @@ export default {
     },
     basketKafes() {
       return [...new Set(this.basket.map(el => el.kafeId))]
-    },
-    sumCafe() {
-      return 250
     }
   }
 }

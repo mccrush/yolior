@@ -8,12 +8,11 @@
       >
     </div>
     <div class="list-group mt-2">
-      <button
+      <div
         v-for="item in products"
         :key="item.id"
-        type="button"
         class="
-          list-group-item list-group-item-action
+          list-group-item
           d-flex
           justify-content-between
           align-items-center
@@ -23,9 +22,18 @@
         {{ item.title }}
         <div>
           <span class="badge bg-light text-dark me-2">{{ item.kafeId }}</span>
+          <span v-if="item.weight" class="badge bg-light text-dark me-2">
+            {{ item.weight }} г</span
+          >
+          <span v-if="item.amount" class="badge bg-light text-dark me-2">
+            {{ item.amount }} шт</span
+          >
+          <span v-if="item.volume" class="badge bg-light text-dark me-2">
+            {{ item.volume }} л</span
+          >
           <span class="badge bg-success">{{ item.price }} ₽</span>
         </div>
-      </button>
+      </div>
     </div>
   </div>
 </template>
