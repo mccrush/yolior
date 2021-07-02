@@ -35,9 +35,7 @@ export default {
   data() {
     return {}
   },
-  created() {
-    console.log(window.location)
-  },
+  created() {},
   computed: {
     userId() {
       return this.$store.getters.userId

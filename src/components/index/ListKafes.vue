@@ -1,7 +1,7 @@
 <template>
   <div class="row row-cols-1 row-cols-md-3 g-4">
     <div v-for="item in list" :key="item.id" class="col">
-      <div class="card shadow-sm border-0 h-100">
+      <div class="card shadow-sm border-0 h-100" @click="setItemId(item.id)">
         <img
           v-if="type === 'kafeId'"
           :src="'/img/' + item.alias + '/main.jpg'"
@@ -24,37 +24,14 @@
         />
         <div class="card-body">
           <h5 class="card-title">
-            <router-link
-              v-if="type === 'kafeId'"
-              :to="'/' + item.alias"
-              class="stretched-link"
-              >{{ item.title }}</router-link
-            >
-            <router-link
-              v-if="type === 'categoryId'"
-              :to="'/' + $route.params.kafe[0] + '/' + item.alias"
-              class="stretched-link"
-              >{{ item.title }}</router-link
-            >
-            <span v-if="type === 'productId'">{{ item.title }}</span>
+            {{ item.title }}
           </h5>
           <div v-if="type === 'productId'">
             <p class="card-text">
               <small>Описание для Продуктов</small><br />
               <span class="badge bg-light text-dark"> {{ item.price }} ₽</span>
             </p>
-            <router-link
-              :to="
-                '/' +
-                $route.params.kafe[0] +
-                '/' +
-                $route.params.kafe[1] +
-                '/' +
-                item.alias
-              "
-              class="btn btn-light w-100"
-              >Подробнее</router-link
-            >
+            <button class="btn btn-light w-100">Подробнее</button>
             <button class="btn btn-success w-100 mt-2">В корзину</button>
           </div>
         </div>
@@ -68,6 +45,11 @@ export default {
   props: {
     list: Array,
     type: String
+  },
+  methods: {
+    setItemId(id) {
+      this.$store.commit('setValue', { type: this.type, id })
+    }
   }
 }
 </script>
