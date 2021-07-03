@@ -17,7 +17,7 @@
           ></button>
         </div>
         <div class="modal-body">
-          <div class="d-flex justify-content-center align-items-center mb-3">
+          <div class="d-flex justify-content-center align-items-center mb-2">
             <img src="/logo.svg" width="64" height="64" alt="Yolior logo" />
             <h2 class="d-inline-block pt-2">Yolior</h2>
           </div>
