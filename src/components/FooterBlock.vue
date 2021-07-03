@@ -5,15 +5,20 @@
         >&copy; {{ new Date().getFullYear() }} Yolior&nbsp;</small
       >
       <small class="mb-3 text-muted">
-        |&nbsp;&nbsp;Разработка
-        <a
+        |&nbsp;&nbsp;
+        <!-- Разработка<a
           class="link"
           href="https://mccrush.ru"
           target="_blank"
           title="Перейти на сайт mccrush.ru"
           >«mccrush apps»</a
-        >
+        > -->
       </small>
+      <button
+        class="btn btn-sm btn-outline-dark lh-1 m-0 p-0 pt-1 pb-1 ps-2 pe-2"
+      >
+        О проекте
+      </button>
     </div>
   </div>
 </template>
