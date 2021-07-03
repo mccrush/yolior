@@ -11,13 +11,16 @@
         <component :is="myComponent" />
       </transition>
 
-      <Footer-block />
+      <Footer-block @show-modal="showModal" />
     </div>
+    <ModalWindow id="descriptionModal" />
   </div>
 </template>
 
 <script>
 import 'bootstrap/dist/css/bootstrap.min.css'
+import Modal from 'bootstrap/js/dist/modal'
+import ModalWindow from '@/components/ModalWindow'
 import NavbarBlock from '@/components/NavbarBlock'
 import Index from '@/views/Index'
 import Login from '@/views/Login'
@@ -26,16 +29,13 @@ import FooterBlock from '@/components/FooterBlock'
 
 export default {
   components: {
+    ModalWindow,
     NavbarBlock,
     Index,
     Login,
     Admin,
     FooterBlock
   },
-  data() {
-    return {}
-  },
-  created() {},
   computed: {
     userId() {
       return this.$store.getters.userId
@@ -50,6 +50,12 @@ export default {
       } else {
         return 'Index'
       }
+    }
+  },
+  methods: {
+    showModal() {
+      const myModal = new Modal(document.getElementById('descriptionModal'))
+      myModal.show()
     }
   }
 }

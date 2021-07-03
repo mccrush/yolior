@@ -16,6 +16,7 @@
       </small>
       <button
         class="btn btn-sm btn-outline-dark lh-1 m-0 p-0 pt-1 pb-1 ps-2 pe-2"
+        @click="$emit('show-modal')"
       >
         О проекте
       </button>
