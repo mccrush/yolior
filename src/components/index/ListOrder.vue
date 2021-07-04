@@ -3,7 +3,7 @@
     <div class="d-flex justify-content-between align-items-center">
       <!-- <h5>{{ kafeId }}</h5> -->
       <h5 class="m-0">{{ kafe.title }}</h5>
-      <a :href="'tel:' + kafe.phone" class="btn btn-warning text-white"
+      <a :href="'tel:' + kafe.phone" class="btn btn-warning text-white lh-1 p-2"
         ><strong>Позвонить и заказать</strong></a
       >
     </div>
@@ -20,22 +20,25 @@
         "
       >
         <div>
-          <span class="badge bg-white text-danger border border-danger me-2">
+          <span
+            class="badge bg-white text-danger border border-danger me-2 p-1"
+          >
             {{ item.categoryTitle }}
           </span>
           {{ item.title }}
         </div>
         <div>
-          <span v-if="item.weight" class="badge bg-light text-dark me-2">
+          <span v-if="item.weight" class="badge bg-light text-dark me-2 p-1">
             {{ item.weight }} г</span
           >
-          <span v-if="item.amount" class="badge bg-light text-dark me-2">
+          <span v-if="item.amount" class="badge bg-light text-dark me-2 p-1">
             {{ item.amount }} шт</span
           >
-          <span v-if="item.volume" class="badge bg-light text-dark me-2">
+          <span v-if="item.volume" class="badge bg-light text-dark me-2 p-1">
             {{ item.volume }} л</span
           >
-          <span class="badge bg-white text-success border border-success me-2"
+          <span
+            class="badge bg-white text-success border border-success me-2 p-1"
             >{{ item.price }} ₽</span
           >
           <button

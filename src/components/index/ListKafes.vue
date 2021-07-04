@@ -15,16 +15,27 @@
           <div v-if="type === 'productId'">
             <p class="card-text">
               <!-- <small>Описание для Продуктов</small><br /> -->
-              <span v-if="item.weight" class="badge bg-light text-dark me-2">
+              <span
+                v-if="item.weight"
+                class="badge bg-light text-dark me-2 p-1"
+              >
                 {{ item.weight }} г</span
               >
-              <span v-if="item.amount" class="badge bg-light text-dark me-2">
+              <span
+                v-if="item.amount"
+                class="badge bg-light text-dark me-2 p-1"
+              >
                 {{ item.amount }} шт</span
               >
-              <span v-if="item.volume" class="badge bg-light text-dark me-2">
+              <span
+                v-if="item.volume"
+                class="badge bg-light text-dark me-2 p-1"
+              >
                 {{ item.volume }} л</span
               >
-              <span class="badge bg-white text-success border border-success">
+              <span
+                class="badge bg-white text-success border border-success p-1"
+              >
                 {{ item.price }} ₽</span
               >
             </p>
