@@ -5,7 +5,7 @@
         type="text"
         v-model.trim="categoryTitle"
         class="form-control"
-        placeholder="Category title"
+        placeholder="Категория"
         disabled
       />
     </div>
@@ -14,7 +14,7 @@
         type="text"
         v-model.trim="title"
         class="form-control"
-        placeholder="Title"
+        placeholder="Название блюда"
         @input="toTranslit"
         @keypress.enter="addItem"
         :disabled="!categoryId"
@@ -37,7 +37,7 @@
         step="10"
         v-model.number="price"
         class="form-control"
-        placeholder="Price"
+        placeholder="Цена"
         :disabled="!categoryId"
       />
     </div>
@@ -46,7 +46,7 @@
         type="text"
         v-model.trim="weight"
         class="form-control"
-        placeholder="Weight"
+        placeholder="Вес, г"
         :disabled="!categoryId"
       />
     </div>
@@ -55,7 +55,7 @@
         type="text"
         v-model.trim="amount"
         class="form-control"
-        placeholder="Amount"
+        placeholder="Колич., шт"
         :disabled="!categoryId"
       />
     </div>
@@ -64,7 +64,7 @@
         type="text"
         v-model.trim="volume"
         class="form-control"
-        placeholder="Volume"
+        placeholder="Объем, л"
         :disabled="!categoryId"
       />
     </div>
@@ -75,7 +75,7 @@
         @click="addItem"
         :disabled="!categoryId"
       >
-        Add
+        Добавить
       </button>
     </div>
   </div>
@@ -85,7 +85,7 @@
         type="text"
         v-model.trim="item.categoryTitle"
         class="form-control"
-        placeholder="Category title"
+        placeholder="Категория"
       />
     </div>
     <div class="col-12 mt-1">
@@ -93,7 +93,7 @@
         type="text"
         v-model.trim="item.title"
         class="form-control"
-        placeholder="Title"
+        placeholder="Название блюда"
         @input="toTranslit"
       />
     </div>
@@ -113,7 +113,7 @@
         step="10"
         v-model.number="item.price"
         class="form-control"
-        placeholder="Price"
+        placeholder="Цена"
         :disabled="!categoryId"
       />
     </div>
@@ -122,7 +122,7 @@
         type="text"
         v-model.trim="item.weight"
         class="form-control"
-        placeholder="Weight"
+        placeholder="Вес, г"
         :disabled="!categoryId"
       />
     </div>
@@ -131,7 +131,7 @@
         type="text"
         v-model.trim="item.amount"
         class="form-control"
-        placeholder="Amount"
+        placeholder="Колич., шт"
         :disabled="!categoryId"
       />
     </div>
@@ -140,7 +140,7 @@
         type="text"
         v-model.trim="item.volume"
         class="form-control"
-        placeholder="Volume"
+        placeholder="Объем, л"
         :disabled="!categoryId"
       />
     </div>
@@ -151,10 +151,10 @@
           class="btn btn-outline-secondary w-25"
           @click="$emit('clear-item')"
         >
-          CLR
+          Очист.
         </button>
         <button type="button" class="btn btn-success w-75" @click="updateItem">
-          Save
+          Сохранить
         </button>
       </div>
     </div>

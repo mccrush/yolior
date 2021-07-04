@@ -5,7 +5,7 @@
         type="text"
         v-model.trim="title"
         class="form-control"
-        placeholder="Title"
+        placeholder="Название категории"
         @input="toTranslit"
         @keypress.enter="addItem"
         :disabled="!kafeId"
@@ -27,7 +27,7 @@
         @click="addItem"
         :disabled="!kafeId"
       >
-        Add
+        Добавить
       </button>
     </div>
   </div>
@@ -37,7 +37,7 @@
         type="text"
         v-model.trim="item.title"
         class="form-control"
-        placeholder="Title"
+        placeholder="Название категории"
         @input="toTranslit"
       />
     </div>
@@ -56,10 +56,10 @@
           class="btn btn-outline-secondary w-25"
           @click="$emit('clear-item')"
         >
-          CLR
+          Очист.
         </button>
         <button type="button" class="btn btn-success w-75" @click="updateItem">
-          Save
+          Сохранить
         </button>
       </div>
     </div>

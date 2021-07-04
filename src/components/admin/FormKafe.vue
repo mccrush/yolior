@@ -28,18 +28,24 @@
     </div>
     <div class="col-6 mt-1 pe-0">
       <input
-        type="text"
-        v-model.trim="delprice"
+        type="number"
+        min="0"
+        max="9990"
+        step="10"
+        v-model.number="delprice"
         class="form-control"
-        placeholder="Стоимость доставки"
+        placeholder="Стоим. доставки"
       />
     </div>
     <div class="col-6 mt-1 ps-1">
       <input
-        type="text"
-        v-model.trim="delsum"
+        type="number"
+        min="0"
+        max="9990"
+        step="10"
+        v-model.number="delsum"
         class="form-control"
-        placeholder="Сумма беспл. доставки"
+        placeholder="Беспл. доставка"
       />
     </div>
     <div class="col-12 mt-1">
@@ -48,7 +54,7 @@
         class="btn btn-sm btn-success w-100"
         @click="addItem"
       >
-        Add
+        Добавить
       </button>
     </div>
   </div>
@@ -80,18 +86,24 @@
     </div>
     <div class="col-6 mt-1 pe-0">
       <input
-        type="text"
-        v-model.trim="item.delprice"
+        type="number"
+        min="0"
+        max="9990"
+        step="10"
+        v-model.number="item.delprice"
         class="form-control"
-        placeholder="Стоимость доставки"
+        placeholder="Стоим. доставки"
       />
     </div>
     <div class="col-6 mt-1 ps-1">
       <input
-        type="text"
-        v-model.trim="item.delsum"
+        type="number"
+        min="0"
+        max="9990"
+        step="10"
+        v-model.number="item.delsum"
         class="form-control"
-        placeholder="Сумма беспл. доставки"
+        placeholder="Беспл. доставка"
       />
     </div>
     <div class="col-12 mt-1">
@@ -101,10 +113,10 @@
           class="btn btn-outline-secondary w-25"
           @click="$emit('clear-item')"
         >
-          CLR
+          Очист.
         </button>
         <button type="button" class="btn btn-success w-75" @click="updateItem">
-          Save
+          Сохранить
         </button>
       </div>
     </div>
