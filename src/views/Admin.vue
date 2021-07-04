@@ -2,7 +2,7 @@
   <div class="row ps-2 pe-2 pb-3">
     <div class="col-12">
       <div class="row">
-        <div class="col-4">
+        <div class="col-12 col-sm-6 col-md-4">
           <h4 class="text-center">Кафе</h4>
           <FormKafe :item="kafe" @clear-item="kafe = null" />
           <hr />
@@ -15,7 +15,7 @@
             @edit-item="editKafe"
           />
         </div>
-        <div class="col-4">
+        <div class="col-12 col-sm-6 col-md-4 mt-2 mt-sm-0">
           <h4 class="text-center">Категория</h4>
           <FormCategory
             :item="category"
@@ -33,7 +33,7 @@
             @edit-item="editCategory"
           />
         </div>
-        <div class="col-4">
+        <div class="col-12 col-md-4 mt-2 mt-md-0">
           <h4 class="text-center">Блюдо</h4>
           <FormProduct
             :item="product"
