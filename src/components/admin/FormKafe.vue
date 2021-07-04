@@ -5,7 +5,7 @@
         type="text"
         v-model.trim="title"
         class="form-control"
-        placeholder="Title"
+        placeholder="Название кафе"
         @input="toTranslit"
         @keypress.enter="addItem"
       />
@@ -23,7 +23,23 @@
         type="text"
         v-model.trim="phone"
         class="form-control"
-        placeholder="Phone"
+        placeholder="Телефон доставки"
+      />
+    </div>
+    <div class="col-6 mt-1 pe-0">
+      <input
+        type="text"
+        v-model.trim="delprice"
+        class="form-control"
+        placeholder="Стоимость доставки"
+      />
+    </div>
+    <div class="col-6 mt-1 ps-1">
+      <input
+        type="text"
+        v-model.trim="delsum"
+        class="form-control"
+        placeholder="Сумма беспл. доставки"
       />
     </div>
     <div class="col-12 mt-1">
@@ -42,7 +58,7 @@
         type="text"
         v-model.trim="item.title"
         class="form-control"
-        placeholder="Title"
+        placeholder="Название кафе"
         @input="toTranslit"
       />
     </div>
@@ -59,7 +75,23 @@
         type="text"
         v-model.trim="item.phone"
         class="form-control"
-        placeholder="Phone"
+        placeholder="Телефон доставки"
+      />
+    </div>
+    <div class="col-6 mt-1 pe-0">
+      <input
+        type="text"
+        v-model.trim="item.delprice"
+        class="form-control"
+        placeholder="Стоимость доставки"
+      />
+    </div>
+    <div class="col-6 mt-1 ps-1">
+      <input
+        type="text"
+        v-model.trim="item.delsum"
+        class="form-control"
+        placeholder="Сумма беспл. доставки"
       />
     </div>
     <div class="col-12 mt-1">
@@ -90,7 +122,9 @@ export default {
     return {
       title: '',
       alias: '',
-      phone: ''
+      phone: '',
+      delprice: '',
+      delsum: ''
     }
   },
   methods: {
@@ -100,13 +134,17 @@ export default {
           id: Date.now().toString(),
           title: this.title,
           alias: this.alias,
-          phone: this.phone
+          phone: this.phone,
+          delprice: this.delprice,
+          delsum: this.delsum
         }
 
         this.$store.commit('addKafe', item)
         this.title = ''
         this.alias = ''
         this.phone = ''
+        this.delprice = ''
+        this.delsum = ''
         const res = await this.$store.dispatch('addKafe', item)
         if (res) {
           this.$store.commit('addMessage', 'das')
