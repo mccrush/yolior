@@ -20,7 +20,7 @@
       }"
     >
       {{ item.title }}
-      <div>
+      <div class="d-flex align-items-center">
         <div class="btns btn-group">
           <button
             class="btn btn-sm btn-outline-secondary p-0 ps-1 pe-1"
@@ -29,14 +29,14 @@
             Edit
           </button>
           <button
-            class="btn btn-sm btn-outline-secondary p-0 ps-1 pe-1"
+            class="btn btn-sm btn-outline-danger p-0 ps-1 pe-1"
             @click="removeItem(item.id)"
           >
             Del
           </button>
         </div>
         <div class="price d-inline ms-1" v-if="type === 'productId'">
-          <span class="badge bg-success">{{ item.price }} ₽</span>
+          <span class="badge bg-success p-1">{{ item.price }} ₽</span>
         </div>
       </div>
     </button>
@@ -54,29 +54,31 @@ export default {
   },
   methods: {
     async removeItem(id) {
-      let res = false
-      if (this.type === 'kafeId') {
-        this.$store.commit('removeKafe', id)
-        res = await this.$store.dispatch('removeKafe', id)
-      } else if (this.type === 'categoryId') {
-        this.$store.commit('removeCategory', id)
-        res = await this.$store.dispatch('removeCategory', {
-          id,
-          kafeId: this.kafeId
-        })
-      } else if (this.type === 'productId') {
-        this.$store.commit('removeProduct', id)
-        res = await this.$store.dispatch('removeProduct', {
-          id,
-          kafeId: this.kafeId,
-          categoryId: this.categoryId
-        })
-      }
+      if (confirm('Действительно удалить?')) {
+        let res = false
+        if (this.type === 'kafeId') {
+          this.$store.commit('removeKafe', id)
+          res = await this.$store.dispatch('removeKafe', id)
+        } else if (this.type === 'categoryId') {
+          this.$store.commit('removeCategory', id)
+          res = await this.$store.dispatch('removeCategory', {
+            id,
+            kafeId: this.kafeId
+          })
+        } else if (this.type === 'productId') {
+          this.$store.commit('removeProduct', id)
+          res = await this.$store.dispatch('removeProduct', {
+            id,
+            kafeId: this.kafeId,
+            categoryId: this.categoryId
+          })
+        }
 
-      if (res) {
-        this.$store.commit('addMessage', 'ris')
-      } else {
-        this.$store.commit('addMessage', 'rie')
+        if (res) {
+          this.$store.commit('addMessage', 'ris')
+        } else {
+          this.$store.commit('addMessage', 'rie')
+        }
       }
     },
     setItemId(id) {
