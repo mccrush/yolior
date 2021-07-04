@@ -1,20 +1,23 @@
 <template>
   <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
     <div class="max-width-780 container">
-      <router-link class="navbar-brand pb-2" to="/">
+      <div class="navbar-brand d-flex justify-content-center pb-2">
         <img
           src="/logo.svg"
-          height="30"
+          height="44"
           class="d-inline-block align-top me-2"
           alt="Logo"
         />
-        <strong>Yolior - заказ доставки в Славгороде</strong>
-      </router-link>
-      <div v-if="pathname === '/admin'">
+        <div class="pt-1 lh-1">
+          <strong>Yolior</strong><br />
+          <small class="text-muted">заказ доставки в Славгороде</small>
+        </div>
+      </div>
+      <!-- <div v-if="pathname === '/admin'">
         <span v-if="userId" class="navbar-brand badge bg-success text-white"
           >Вы авторизованы</span
         ><a v-else class="navbar-brand pb-2" href="/login">Войти</a>
-      </div>
+      </div> -->
     </div>
   </nav>
 </template>
