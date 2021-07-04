@@ -69,6 +69,15 @@
       />
     </div>
     <div class="col-12 mt-1">
+      <textarea
+        rows="3"
+        v-model.trim="description"
+        class="form-control lh-1"
+        placeholder="Дополнительные сведения, состав"
+        :disabled="!categoryId"
+      ></textarea>
+    </div>
+    <div class="col-12 mt-1">
       <button
         type="button"
         class="btn btn-sm btn-success w-100"
@@ -145,6 +154,15 @@
       />
     </div>
     <div class="col-12 mt-1">
+      <textarea
+        rows="3"
+        v-model.trim="item.description"
+        class="form-control lh-1"
+        placeholder="Дополнительные сведения, состав"
+        :disabled="!categoryId"
+      ></textarea>
+    </div>
+    <div class="col-12 mt-1">
       <div class="btn-group btn-group-sm w-100">
         <button
           type="button"
@@ -178,7 +196,8 @@ export default {
       price: '',
       weight: '',
       amount: '',
-      volume: ''
+      volume: '',
+      description: ''
     }
   },
   methods: {
@@ -192,6 +211,7 @@ export default {
           weight: this.weight,
           amount: this.amount,
           volume: this.volume,
+          description: this.description,
           kafeId: this.kafeId,
           categoryId: this.categoryId,
           categoryTitle: this.categoryTitle
@@ -204,6 +224,7 @@ export default {
         this.weight = ''
         this.amount = ''
         this.volume = ''
+        this.description = ''
         const res = await this.$store.dispatch('addProduct', {
           item,
           kafeId: this.kafeId,
