@@ -3,7 +3,7 @@
     <div class="col-12">
       <div class="row">
         <div class="col-4">
-          <h4 class="text-center">Kafe</h4>
+          <h4 class="text-center">Кафе</h4>
           <FormKafe :item="kafe" @clear-item="kafe = null" />
           <hr />
           <LoadingAnimate v-if="loadingKafes" />
@@ -16,7 +16,7 @@
           />
         </div>
         <div class="col-4">
-          <h4 class="text-center">Category</h4>
+          <h4 class="text-center">Категория</h4>
           <FormCategory
             :item="category"
             :kafeId="kafeId"
@@ -34,7 +34,7 @@
           />
         </div>
         <div class="col-4">
-          <h4 class="text-center">Product</h4>
+          <h4 class="text-center">Блюдо</h4>
           <FormProduct
             :item="product"
             :kafeId="kafeId"
