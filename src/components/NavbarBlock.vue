@@ -10,7 +10,7 @@
         />
         <div class="pt-1 lh-1">
           <strong>Yolior</strong><br />
-          <small class="text-muted">заказ доставки в Славгороде</small>
+          <small class="text-muted">доставка еды в Славгороде</small>
         </div>
       </div>
       <!-- <div v-if="pathname === '/admin'">
