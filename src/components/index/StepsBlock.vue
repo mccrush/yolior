@@ -3,7 +3,7 @@
     <div class="col-12 col-sm-6 col-md-3">
       <button
         class="
-          btn
+          btn-1 btn
           shadow-sm
           d-flex
           justify-content-center
@@ -202,5 +202,12 @@ export default {
 <style scoped>
 .btn.active {
   border: 1px solid #ffc107;
+}
+
+.btn-1::before {
+  content: '2';
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 </style>
