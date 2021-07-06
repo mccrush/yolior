@@ -22,7 +22,7 @@
     <div class="col-12 col-sm-6 col-md-3 mt-2 mt-sm-0">
       <button
         class="
-          btn
+          btn-2 btn
           shadow-sm
           d-flex
           justify-content-center
@@ -36,14 +36,14 @@
         }"
         :disabled="!kafeId"
       >
-        <h2 class="me-2">&#8250;</h2>
+        <!-- <h2 class="me-2">&#8250;</h2> -->
         <h5 class="m-0 pt-2 pb-2">Категорию</h5>
       </button>
     </div>
     <div class="col-12 col-sm-6 col-md-3 mt-2 mt-md-0">
       <button
         class="
-          btn
+          btn-3 btn
           shadow-sm
           d-flex
           justify-content-center
@@ -57,14 +57,14 @@
         }"
         :disabled="!categoryId"
       >
-        <h2 class="me-2">&#8250;</h2>
+        <!-- <h2 class="me-2">&#8250;</h2> -->
         <h5 class="m-0 pt-2 pb-2">Блюдо</h5>
       </button>
     </div>
     <div class="col-12 col-sm-6 col-md-3 mt-2 mt-md-0">
       <button
         class="
-          btn
+          btn-4 btn
           shadow-sm
           d-flex
           justify-content-center
@@ -79,7 +79,7 @@
         }"
         :disabled="!basket.length"
       >
-        <h2 class="me-2">&#8250;</h2>
+        <!-- <h2 class="me-2">&#8250;</h2> -->
         <h5 class="m-0 pt-2 pb-2">Сделайте заказ</h5>
         <span
           v-if="basket.length"
@@ -204,10 +204,16 @@ export default {
   border: 1px solid #ffc107;
 }
 
-.btn-1::before {
-  content: '2';
-  position: absolute;
-  top: 0;
-  left: 0;
+.btn-1 {
+  background: url(/img/index/steps/1.svg) 3% center no-repeat;
+}
+.btn-2 {
+  background: url(/img/index/steps/2.svg) 3% center no-repeat;
+}
+.btn-3 {
+  background: url(/img/index/steps/3.svg) 3% center no-repeat;
+}
+.btn-4 {
+  background: url(/img/index/steps/4.svg) 3% center no-repeat;
 }
 </style>

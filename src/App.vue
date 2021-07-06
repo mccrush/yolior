@@ -62,6 +62,8 @@ export default {
 
 <style>
 body {
+  /* font-family: 'Roboto', sans-serif;
+  font-weight: 400; */
   background: #f8f9fa;
   background-image: url(/img/food.png);
 }
