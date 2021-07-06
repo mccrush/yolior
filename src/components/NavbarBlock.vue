@@ -6,7 +6,7 @@
       <div class="navbar-brand d-flex justify-content-center">
         <img
           src="/logo.svg"
-          height="42"
+          height="41"
           class="d-inline-block align-top me-2"
           alt="Logo"
         />
