@@ -1,16 +1,20 @@
 <template>
-  <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+  <nav
+    class="navbar navbar-expand-md navbar-light bg-white shadow-sm pt-0 pb-1"
+  >
     <div class="max-width-780 container">
-      <div class="navbar-brand d-flex justify-content-center pb-2">
+      <div class="navbar-brand d-flex justify-content-center">
         <img
           src="/logo.svg"
-          height="44"
+          height="42"
           class="d-inline-block align-top me-2"
           alt="Logo"
         />
-        <div class="pt-1 lh-1">
+        <div class="lh-07 pt-2">
           <strong>Yolior</strong><br />
-          <small class="text-muted">доставка еды в Славгороде</small>
+          <small class="text-muted"
+            ><small>доставка еды в Славгороде</small></small
+          >
         </div>
       </div>
       <!-- <div v-if="pathname === '/admin'">
@@ -34,3 +38,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.lh-07 {
+  line-height: 0.7 !important;
+}
+</style>

@@ -1,8 +1,7 @@
 <template>
   <div>
     <Navbar-block />
-
-    <div class="max-width-780 container bg-white rounded-bottom pt-3">
+    <div class="max-width-78 container bg-white rounded-bottom pt-3">
       <!-- <router-view v-slot="{ Component }">
         <component :is="Component" />
       </router-view> -->
@@ -64,6 +63,7 @@ export default {
 <style>
 body {
   background: #f8f9fa;
+  background-image: url(/img/food.png);
 }
 
 /* p {
