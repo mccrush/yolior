@@ -19,6 +19,10 @@ export default {
       state.basket = state.basket.filter(item => item.id !== id)
       localStorage.setItem('basket', JSON.stringify(state.basket))
     },
+    removeAllProductsInKafe(state, id) {
+      state.basket = state.basket.filter(item => item.kafeId !== id)
+      localStorage.setItem('basket', JSON.stringify(state.basket))
+    },
     setShowBasket(state, value) {
       state.showBasket = value
       localStorage.setItem('showBasket', value)

@@ -7,6 +7,7 @@
             :kafeId="el"
             :basket="basket"
             @remove-product="removeProduct"
+            @remove-all-prod-in-kafe="removeAllProductsInKafe"
           />
         </div>
       </div>
@@ -32,6 +33,9 @@ export default {
   methods: {
     removeProduct(id) {
       this.$store.commit('removeProduct', id)
+    },
+    removeAllProductsInKafe(id) {
+      this.$store.commit('removeAllProductsInKafe', id)
     }
   }
 }

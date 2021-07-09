@@ -60,6 +60,7 @@
         Общая сумма заказа
         <span class="badge bg-success ms-1 me-2">{{ totalSum }} ₽</span>
         <button
+          @click="$emit('remove-all-prod-in-kafe', kafeId)"
           class="btn btn-sm btn-outline-danger lh-1 p-0 ps-2 pt-1 pb-1 pe-2"
         >
           &#215;
