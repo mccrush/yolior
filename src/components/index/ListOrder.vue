@@ -54,6 +54,28 @@
           {{ item.title }}
         </div>
       </div>
+      <div
+        v-if="sumProd < kafe.delsum"
+        class="
+          list-group-item
+          d-flex
+          justify-content-between
+          align-items-center
+          lh-1
+          ps-2
+          pe-2
+        "
+      >
+        <span
+          >Доставка<br />
+          <small class="text-muted"
+            >(бесплатно при заказе от {{ kafe.delsum }} ₽)</small
+          ></span
+        >
+        <span class="badge bg-white text-success border border-success p-1"
+          >{{ kafe.delprice }} ₽</span
+        >
+      </div>
     </div>
     <div class="d-flex justify-content-end pt-1 pe-2">
       <div>
@@ -86,8 +108,15 @@ export default {
     products() {
       return this.basket.filter(item => item.kafeId === this.kafeId)
     },
-    totalSum() {
+    sumProd() {
       return this.products.reduce((accum, current) => accum + current.price, 0)
+    },
+    totalSum() {
+      if (this.sumProd >= this.kafe.delsum) {
+        return this.sumProd
+      } else {
+        return this.sumProd + this.kafe.delprice
+      }
     }
   }
 }
