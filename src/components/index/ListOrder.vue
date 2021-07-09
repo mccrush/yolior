@@ -11,46 +11,51 @@
       <div
         v-for="item in products"
         :key="item.id"
-        class="
-          list-group-item
-          d-flex
-          justify-content-between
-          align-items-center
-          lh-1
-        "
+        class="list-group-item lh-1 ps-2 pe-2"
       >
-        <div>
+        <div class="d-flex justify-content-between align-items-center">
           <span
-            class="badge bg-white text-danger border border-danger me-2 p-1"
+            class="
+              badge
+              bg-white
+              text-danger
+              border border-danger
+              me-2
+              mb-1
+              p-1
+            "
           >
             {{ item.categoryTitle }}
           </span>
-          {{ item.title }}
+
+          <div>
+            <span v-if="item.weight" class="badge bg-light text-dark me-2 p-1">
+              {{ item.weight }} г</span
+            >
+            <span v-if="item.amount" class="badge bg-light text-dark me-2 p-1">
+              {{ item.amount }} шт</span
+            >
+            <span v-if="item.volume" class="badge bg-light text-dark me-2 p-1">
+              {{ item.volume }} л</span
+            >
+            <span
+              class="badge bg-white text-success border border-success me-2 p-1"
+              >{{ item.price }} ₽</span
+            >
+            <button
+              class="btn btn-sm btn-outline-danger lh-1 p-0 ps-2 pt-1 pb-1 pe-2"
+              @click="$emit('remove-product', item.id)"
+            >
+              &#215;
+            </button>
+          </div>
         </div>
-        <div>
-          <span v-if="item.weight" class="badge bg-light text-dark me-2 p-1">
-            {{ item.weight }} г</span
-          >
-          <span v-if="item.amount" class="badge bg-light text-dark me-2 p-1">
-            {{ item.amount }} шт</span
-          >
-          <span v-if="item.volume" class="badge bg-light text-dark me-2 p-1">
-            {{ item.volume }} л</span
-          >
-          <span
-            class="badge bg-white text-success border border-success me-2 p-1"
-            >{{ item.price }} ₽</span
-          >
-          <button
-            class="btn btn-sm btn-outline-danger lh-1 p-0 ps-2 pt-1 pb-1 pe-2"
-            @click="$emit('remove-product', item.id)"
-          >
-            &#215;
-          </button>
+        <div class="pt-1">
+          {{ item.title }}
         </div>
       </div>
     </div>
-    <div class="d-flex justify-content-end pt-1 pe-3">
+    <div class="d-flex justify-content-end pt-1 pe-2">
       <div>
         Общая сумма заказа
         <span class="badge bg-success ms-1 me-2">{{ totalSum }} ₽</span>
