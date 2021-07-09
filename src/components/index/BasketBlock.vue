@@ -6,7 +6,7 @@
           <ListOrder
             :kafeId="el"
             :basket="basket"
-            @remove-product="removeProduct"
+            @remove-product-from-basket="removeProductFromBasket"
             @remove-all-prod-in-kafe="removeAllProductsInKafe"
           />
         </div>
@@ -32,7 +32,7 @@ export default {
   },
   methods: {
     removeProductFromBasket(id) {
-      this.$store.commit('removeProduct', id)
+      this.$store.commit('removeProductFromBasket', id)
     },
     removeAllProductsInKafe(id) {
       this.$store.commit('removeAllProductsInKafe', id)

@@ -44,7 +44,7 @@
             >
             <button
               class="btn btn-sm btn-outline-danger lh-1 p-0 ps-2 pt-1 pb-1 pe-2"
-              @click="$emit('remove-product', item.id)"
+              @click="$emit('remove-product-from-basket', item.id)"
             >
               &#215;
             </button>
