@@ -123,7 +123,7 @@ export default {
       this.$store.commit('addToBasket', item)
     },
     removeProductFromBasket(id) {
-      this.$store.commit('removeProduct', id)
+      this.$store.commit('removeProductFromBasket', id)
     }
   }
 }
