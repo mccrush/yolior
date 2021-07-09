@@ -15,7 +15,7 @@ export default {
       state.basket.push(product)
       localStorage.setItem('basket', JSON.stringify(state.basket))
     },
-    removeProduct(state, id) {
+    removeProductFromBasket(state, id) {
       state.basket = state.basket.filter(item => item.id !== id)
       localStorage.setItem('basket', JSON.stringify(state.basket))
     },

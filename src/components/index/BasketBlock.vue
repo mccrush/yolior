@@ -31,7 +31,7 @@ export default {
     }
   },
   methods: {
-    removeProduct(id) {
+    removeProductFromBasket(id) {
       this.$store.commit('removeProduct', id)
     },
     removeAllProductsInKafe(id) {
