@@ -12,33 +12,20 @@
           <h5 class="card-title">
             {{ item.title }}
           </h5>
-          <div v-if="type === 'productId'">
-            <p class="card-text">
-              <!-- <small>Описание для Продуктов</small><br /> -->
-              <span
-                v-if="item.weight"
-                class="badge bg-light text-dark me-2 p-1"
-              >
-                {{ item.weight }} г</span
-              >
-              <span
-                v-if="item.amount"
-                class="badge bg-light text-dark me-2 p-1"
-              >
-                {{ item.amount }} шт</span
-              >
-              <span
-                v-if="item.volume"
-                class="badge bg-light text-dark me-2 p-1"
-              >
-                {{ item.volume }} л</span
-              >
-              <span
-                class="badge bg-white text-success border border-success p-1"
-              >
-                {{ item.price }} ₽</span
-              >
-            </p>
+          <div v-if="type === 'productId'" class="card-text">
+            <div class="lh-1 small mb-2">{{ item.description }}</div>
+            <span v-if="item.weight" class="badge bg-light text-dark me-2 p-1">
+              {{ item.weight }} г</span
+            >
+            <span v-if="item.amount" class="badge bg-light text-dark me-2 p-1">
+              {{ item.amount }} шт</span
+            >
+            <span v-if="item.volume" class="badge bg-light text-dark me-2 p-1">
+              {{ item.volume }} л</span
+            >
+            <span class="badge bg-white text-success border border-success p-1">
+              {{ item.price }} ₽</span
+            >
           </div>
         </div>
         <div v-if="type === 'productId'">
