@@ -47,6 +47,14 @@ const messages = {
     text: 'Неизвестная ошибка!',
     type: 'bg-danger'
   },
+  'uds': {
+    text: 'Изображение успешно загружено',
+    type: 'bg-success'
+  },
+  'ude': {
+    text: 'При загрузке изображения произошла ошибка',
+    type: 'bg-danger'
+  },
   'null': null
 }
 

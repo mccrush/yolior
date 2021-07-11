@@ -10,10 +10,18 @@ export default {
     },
   },
   actions: {
-    async uploadKafeImage({ commit, state }, { kafeId }) {
-      const storageRef = storage.ref()
-      const kafeFolderRef = storageRef.child('kafes')
-      const mountainImagesRef = kafeFolderRef.child(kafeId + '/' + kafeId + '.jpg')
+    async uploadKafeImage({ commit, state }, { kafeId, file }) {
+      try {
+        const storageRef = storage.ref()
+        const kafeFolderRef = storageRef.child('kafes')
+        const fileName = kafeId + '.' + file.type.split('/')[1]
+        const mountainImagesRef = kafeFolderRef.child(kafeId + '/' + fileName)
+
+        const res = await mountainImagesRef.put(file)
+        return true
+      } catch (error) {
+        console.log('Error imageKafe.js, action uploadKafeImage(): ', error)
+      }
     }
   },
   getters: {

@@ -5,6 +5,7 @@ import products from './modules/products'
 import user from './modules/user'
 import message from './modules/message'
 import admin from './modules/admin'
+import imageKafe from './modules/imageKafe'
 
 export default createStore({
   modules: {
@@ -13,6 +14,7 @@ export default createStore({
     products,
     user,
     message,
-    admin
+    admin,
+    imageKafe
   }
 })
