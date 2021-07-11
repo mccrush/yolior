@@ -4,7 +4,7 @@
       <div class="card shadow-sm border-0 h-100" @click="setItemId(item.id)">
         <img
           v-if="type === 'kafeId'"
-          :src="'/img/' + item.alias + '/main.jpg'"
+          :src="item.image"
           class="card-img-top"
           :alt="item.title"
         />

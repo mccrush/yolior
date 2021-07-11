@@ -1,5 +1,5 @@
 <template>
-  <div class="mt-3 mb-4">
+  <div v-if="kafe" class="mt-3 mb-4">
     <div class="d-flex justify-content-between align-items-center">
       <!-- <h5>{{ kafeId }}</h5> -->
       <h5 class="m-0">{{ kafe.title }}</h5>
