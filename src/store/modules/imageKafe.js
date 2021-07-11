@@ -18,7 +18,8 @@ export default {
         const mountainImagesRef = kafeFolderRef.child(kafeId + '/' + fileName)
 
         const res = await mountainImagesRef.put(file)
-        return true
+        const resImageUrl = await res.ref.getDownloadURL()
+        return resImageUrl
       } catch (error) {
         console.log('Error imageKafe.js, action uploadKafeImage(): ', error)
       }

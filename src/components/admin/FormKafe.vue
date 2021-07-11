@@ -113,8 +113,8 @@
         class="form-control"
         @change="uploadImage()"
       />
-      <!-- <img v-if="item.imageType" :srs="''" class="w-100" /> -->
-      <img ref="imageFile" class="w-100" />
+      <img v-if="item.image" :src="item.image" class="w-100 mt-1" />
+      <!-- <img ref="imageFile" class="w-100 mt-1" /> -->
     </div>
     <div class="col-12 mt-1">
       <div class="btn-group btn-group-sm w-100">
@@ -159,15 +159,15 @@ export default {
 
       if (file.type.startsWith('image/')) {
         // Отображение превью
-        let imageFile = this.$refs.imageFile
-        imageFile.file = file
-        let reader = new FileReader()
-        reader.onload = (function (aImg) {
-          return function (e) {
-            aImg.src = e.target.result
-          }
-        })(imageFile)
-        reader.readAsDataURL(file)
+        // let imageFile = this.$refs.imageFile
+        // imageFile.file = file
+        // let reader = new FileReader()
+        // reader.onload = (function (aImg) {
+        //   return function (e) {
+        //     aImg.src = e.target.result
+        //   }
+        // })(imageFile)
+        // reader.readAsDataURL(file)
 
         // Вызов метода зарузки файла на сервер
         const res = await this.$store.dispatch('uploadKafeImage', {
@@ -176,7 +176,7 @@ export default {
         })
 
         if (res) {
-          this.item.imageType = file.type.split('/')[1]
+          this.item.image = res
           this.$store.commit('addMessage', 'uds')
         } else {
           this.$store.commit('addMessage', 'ude')
@@ -194,7 +194,7 @@ export default {
           phone: this.phone,
           delprice: this.delprice,
           delsum: this.delsum,
-          imageType: ''
+          image: ''
         }
 
         this.$store.commit('addKafe', item)

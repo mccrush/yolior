@@ -1,6 +1,6 @@
 <template>
   <div class="mess shadow-sm rounded text-white">
-    <p class="m-0">{{ message }}</p>
+    <p class="lh-1 m-0">{{ message }}</p>
   </div>
 </template>
 
