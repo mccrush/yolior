@@ -37,6 +37,20 @@ export default {
       } catch (error) {
         console.log('Error imageKafe.js, action uploadCategoryImage(): ', error)
       }
+    },
+    async uploadProductImage({ commit, state }, { productId, categoryId, kafeId, file }) {
+      try {
+        const storageRef = storage.ref()
+        const kafeFolderRef = storageRef.child('kafes').child(kafeId).child('categorys').child(categoryId).child('products')
+        const fileName = productId + '.' + file.type.split('/')[1]
+        const mountainImagesRef = kafeFolderRef.child(productId + '/' + fileName)
+
+        const res = await mountainImagesRef.put(file)
+        const resImageUrl = await res.ref.getDownloadURL()
+        return resImageUrl
+      } catch (error) {
+        console.log('Error imageKafe.js, action uploadProductImage(): ', error)
+      }
     }
   },
   getters: {
