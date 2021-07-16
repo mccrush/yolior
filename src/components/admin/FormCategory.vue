@@ -93,22 +93,23 @@ export default {
     async uploadImage() {
       const fileList = this.$refs.kafeImage.files
       const file = fileList[0]
+      if (file) {
+        if (file.type.startsWith('image/')) {
+          const res = await this.$store.dispatch('uploadCategoryImage', {
+            categoryId: this.item.id,
+            kafeId: this.kafeId,
+            file
+          })
 
-      if (file.type.startsWith('image/')) {
-        const res = await this.$store.dispatch('uploadCategoryImage', {
-          categoryId: this.item.id,
-          kafeId: this.kafeId,
-          file
-        })
-
-        if (res) {
-          this.item.image = res
-          this.$store.commit('addMessage', 'uds')
+          if (res) {
+            this.item.image = res
+            this.$store.commit('addMessage', 'uds')
+          } else {
+            this.$store.commit('addMessage', 'ude')
+          }
         } else {
-          this.$store.commit('addMessage', 'ude')
+          alert('Выберите для загрузки файл изображения')
         }
-      } else {
-        alert('Выберите для загрузки файл изображения')
       }
     },
     async addItem() {

@@ -3,7 +3,7 @@
     <div v-for="item in list" :key="item.id" class="col-12 col-sm-6 col-md-4">
       <div class="card shadow-sm border-0 h-100" @click="setItemId(item.id)">
         <img
-          v-if="type === 'kafeId'"
+          v-if="item.image"
           :src="item.image"
           class="card-img-top"
           :alt="item.title"
