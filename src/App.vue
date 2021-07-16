@@ -2,10 +2,6 @@
   <div>
     <Navbar-block />
     <div class="max-width-780 container bg-white shadow-sm rounded-bottom pt-3">
-      <!-- <router-view v-slot="{ Component }">
-        <component :is="Component" />
-      </router-view> -->
-
       <transition name="fade" mode="out-in">
         <component :is="myComponent" />
       </transition>
