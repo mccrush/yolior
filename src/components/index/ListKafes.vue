@@ -15,11 +15,11 @@
           :alt="item.title"
         />
         <div class="card-body">
-          <h5 class="card-title">
+          <h5 class="card-title mb-0">
             {{ item.title }}
           </h5>
           <div v-if="type === 'productId'" class="card-text">
-            <div class="lh-1 small mb-2">{{ item.description }}</div>
+            <div class="lh-1 small mt-2 mb-2">{{ item.description }}</div>
             <span v-if="item.weight" class="badge bg-light text-dark me-2 p-1">
               {{ item.weight }} г</span
             >
