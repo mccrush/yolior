@@ -8,6 +8,12 @@
           class="card-img-top"
           :alt="item.title"
         />
+        <img
+          v-else
+          src="/img/index/noimage.jpg"
+          class="card-img-top"
+          :alt="item.title"
+        />
         <div class="card-body">
           <h5 class="card-title">
             {{ item.title }}
