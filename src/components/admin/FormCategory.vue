@@ -50,6 +50,15 @@
       />
     </div>
     <div class="col-12 mt-1">
+      <input
+        type="file"
+        ref="kafeImage"
+        class="form-control"
+        @change="uploadImage()"
+      />
+      <img v-if="item.image" :src="item.image" class="w-100 mt-1" />
+    </div>
+    <div class="col-12 mt-1">
       <div class="btn-group btn-group-sm w-100">
         <button
           type="button"
@@ -81,6 +90,27 @@ export default {
     }
   },
   methods: {
+    async uploadImage() {
+      const fileList = this.$refs.kafeImage.files
+      const file = fileList[0]
+
+      if (file.type.startsWith('image/')) {
+        const res = await this.$store.dispatch('uploadCategoryImage', {
+          categoryId: this.item.id,
+          kafeId: this.kafeId,
+          file
+        })
+
+        if (res) {
+          this.item.image = res
+          this.$store.commit('addMessage', 'uds')
+        } else {
+          this.$store.commit('addMessage', 'ude')
+        }
+      } else {
+        alert('Выберите для загрузки файл изображения')
+      }
+    },
     async addItem() {
       if (this.title && this.alias) {
         const item = {

@@ -114,7 +114,6 @@
         @change="uploadImage()"
       />
       <img v-if="item.image" :src="item.image" class="w-100 mt-1" />
-      <!-- <img ref="imageFile" class="w-100 mt-1" /> -->
     </div>
     <div class="col-12 mt-1">
       <div class="btn-group btn-group-sm w-100">
@@ -153,23 +152,8 @@ export default {
     async uploadImage() {
       const fileList = this.$refs.kafeImage.files
       const file = fileList[0]
-      console.log('fileName:', file.name)
-      console.log('fileSize:', file.size)
-      console.log('fileType:', file.type)
 
       if (file.type.startsWith('image/')) {
-        // Отображение превью
-        // let imageFile = this.$refs.imageFile
-        // imageFile.file = file
-        // let reader = new FileReader()
-        // reader.onload = (function (aImg) {
-        //   return function (e) {
-        //     aImg.src = e.target.result
-        //   }
-        // })(imageFile)
-        // reader.readAsDataURL(file)
-
-        // Вызов метода зарузки файла на сервер
         const res = await this.$store.dispatch('uploadKafeImage', {
           kafeId: this.item.id,
           file
