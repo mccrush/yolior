@@ -31,7 +31,13 @@
             Вы можете присылать актуальную информацию о кафе, блюдах, а также
             свои идеи и предложения по развитию сервиса на адрес
             <a href="mailto:yolior@mail.ru" title="Отправить письмо"
-              ><strong>yolior@mail.ru</strong>
+              ><strong>yolior@mail.ru</strong></a
+            >, или в группу ВКонтакте
+            <a
+              href="https://vk.com/yolior"
+              target="_blank"
+              title="Перейти в группу"
+              ><strong>vk.com/yolior</strong>
             </a>
           </p>
           <p>
