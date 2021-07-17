@@ -169,6 +169,19 @@
         class="form-control"
         @change="uploadImage()"
       />
+      <div class="input-group mt-1">
+        <input
+          type="text"
+          class="form-control form-control-sm"
+          v-model="item.image"
+        />
+        <button
+          class="btn btn-sm btn-light border"
+          @click="copyImageLinkInBuffer($event)"
+        >
+          Copy
+        </button>
+      </div>
       <img v-if="item.image" :src="item.image" class="w-100 mt-1" />
     </div>
     <div class="col-12 mt-1">
@@ -210,6 +223,13 @@ export default {
     }
   },
   methods: {
+    copyImageLinkInBuffer(e) {
+      const el = e.target.parentNode.firstChild
+      el.select()
+      if (document.execCommand('copy')) {
+        console.log('Результат скопирован в буфер')
+      }
+    },
     async uploadImage() {
       const fileList = this.$refs.kafeImage.files
       const file = fileList[0]
