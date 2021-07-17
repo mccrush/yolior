@@ -15,7 +15,7 @@
           :alt="item.title"
         />
         <div class="card-body">
-          <h5 class="card-title mb-0">
+          <h5 class="card-title lh-1 mb-0">
             {{ item.title }}
           </h5>
           <div v-if="type === 'productId'" class="card-text">
