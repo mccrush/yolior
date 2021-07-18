@@ -1,7 +1,7 @@
 <template>
   <div class="list-group">
     <button
-      v-for="item in list"
+      v-for="item in sortList"
       :key="item.id"
       type="button"
       class="
@@ -47,6 +47,8 @@
 </template>
 
 <script>
+import sortMethod from '@/scripts/sortMethod'
+
 export default {
   props: {
     list: Array,
@@ -54,6 +56,11 @@ export default {
     kafeId: String,
     categoryId: String,
     productId: String
+  },
+  computed: {
+    sortList() {
+      return sortMethod(this.list, 'asc', 'position')
+    }
   },
   methods: {
     async removeItem(id) {

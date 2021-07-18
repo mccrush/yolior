@@ -1,7 +1,7 @@
 <template>
   <div class="row row-cols-1 row-cols-md-3 g-4">
     <div
-      v-for="item in list"
+      v-for="item in sortList"
       :key="item.id"
       :id="item.id"
       class="col-12 col-sm-6 col-md-4"
@@ -103,12 +103,17 @@
 </template>
 
 <script>
+import sortMethod from '@/scripts/sortMethod'
+
 export default {
   props: {
     list: Array,
     type: String
   },
   computed: {
+    sortList() {
+      return sortMethod(this.list, 'asc', 'position')
+    },
     basket() {
       return this.$store.getters.basket
     }
