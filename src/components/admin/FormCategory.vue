@@ -11,12 +11,23 @@
         :disabled="!kafeId"
       />
     </div>
-    <div class="col-12 mt-1">
+    <div class="col-8 mt-1 pe-0">
       <input
         type="text"
         v-model.trim="alias"
         class="form-control"
         placeholder="Alias"
+        :disabled="!kafeId"
+      />
+    </div>
+    <div class="col-4 mt-1 ps-1">
+      <input
+        type="number"
+        min="0"
+        max="99"
+        step="1"
+        v-model.number="position"
+        class="form-control"
         :disabled="!kafeId"
       />
     </div>
@@ -41,12 +52,22 @@
         @input="toTranslit"
       />
     </div>
-    <div class="col-12 mt-1">
+    <div class="col-8 mt-1 pe-0">
       <input
         type="text"
         v-model.trim="item.alias"
         class="form-control"
         placeholder="Alias"
+      />
+    </div>
+    <div class="col-4 mt-1 ps-1">
+      <input
+        type="number"
+        min="0"
+        max="99"
+        step="1"
+        v-model.number="item.position"
+        class="form-control"
       />
     </div>
     <div class="col-12 mt-1">
@@ -86,7 +107,8 @@ export default {
   data() {
     return {
       title: '',
-      alias: ''
+      alias: '',
+      position: 0
     }
   },
   methods: {
@@ -118,6 +140,7 @@ export default {
           id: Date.now().toString(),
           title: this.title,
           alias: this.alias,
+          position: this.position,
           kafeId: this.kafeId
         }
 

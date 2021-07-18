@@ -20,7 +20,9 @@
           (type === 'productId' && item.id === productId)
       }"
     >
-      {{ item.position + '. ' + item.title }}
+      <span
+        ><small>{{ item.position + '. ' }}</small> {{ item.title }}</span
+      >
       <div class="d-flex align-items-center">
         <div class="btns btn-group">
           <button
