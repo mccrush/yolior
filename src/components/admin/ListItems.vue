@@ -10,6 +10,7 @@
         justify-content-between
         align-items-center
         lh-1
+        ps-2
       "
       @click="setItemId(item.id)"
       :class="{
@@ -19,7 +20,7 @@
           (type === 'productId' && item.id === productId)
       }"
     >
-      {{ item.title }}
+      {{ item.position + '. ' + item.title }}
       <div class="d-flex align-items-center">
         <div class="btns btn-group">
           <button
