@@ -2,7 +2,6 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import store from './store'
 import { auth } from './firebase'
-import './registerServiceWorker'
 
 let app
 
