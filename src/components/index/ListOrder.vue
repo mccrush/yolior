@@ -1,9 +1,11 @@
 <template>
   <div v-if="kafe" class="mt-3 mb-4">
-    <div class="d-flex justify-content-between align-items-center">
+    <div class="d-flex justify-content-between align-items-end">
       <!-- <h5>{{ kafeId }}</h5> -->
       <h5 class="m-0">{{ kafe.title }}</h5>
-      <a :href="'tel:' + kafe.phone" class="btn btn-warning text-white lh-1 p-2"
+      <a
+        :href="'tel:' + kafe.phone"
+        class="btn btn-warning text-white lh-1 p-2 pt-3 pb-3"
         ><strong>Позвонить и заказать</strong></a
       >
     </div>
@@ -43,7 +45,16 @@
               >{{ item.price }} ₽</span
             >
             <button
-              class="btn btn-sm btn-outline-danger lh-1 p-0 ps-2 pt-1 pb-1 pe-2"
+              class="
+                btn btn-sm btn-outline-danger
+                lh-1
+                mt-1
+                p-0
+                ps-3
+                pt-2
+                pb-2
+                pe-3
+              "
               @click="$emit('remove-product-from-basket', item.id)"
             >
               &#215;
@@ -83,7 +94,16 @@
         <span class="badge bg-success ms-1 me-2">{{ totalSum }} ₽</span>
         <button
           @click="$emit('remove-all-prod-in-kafe', kafeId)"
-          class="btn btn-sm btn-outline-danger lh-1 p-0 ps-2 pt-1 pb-1 pe-2"
+          class="
+            btn btn-sm btn-outline-danger
+            lh-1
+            mt-1
+            p-0
+            ps-3
+            pt-2
+            pb-2
+            pe-3
+          "
         >
           &#215;
         </button>
