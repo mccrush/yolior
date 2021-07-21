@@ -33,12 +33,12 @@ self.addEventListener('activate', async event => {
   )
 })
 
-self.addEventListener('fetch', event => {
-  console.log('[SW]: fetch')
-  event.respondWith(cacheFirst(event.request))
-})
+// self.addEventListener('fetch', event => {
+//   console.log('[SW]: fetch')
+//   event.respondWith(cacheFirst(event.request))
+// })
 
-async function cacheFirst(request) {
-  const cached = await caches.match(request)
-  return cached ?? await fetch(request)
-}
+// async function cacheFirst(request) {
+//   const cached = await caches.match(request)
+//   return cached ?? await fetch(request)
+// }
