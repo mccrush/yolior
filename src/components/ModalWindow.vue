@@ -6,7 +6,7 @@
     aria-hidden="true"
   >
     <div class="modal-dialog modal-fullscreen-sm-down">
-      <div class="modal-content">
+      <div class="modal-content border-0">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">О проекте</h5>
           <button
