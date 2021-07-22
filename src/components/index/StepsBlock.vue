@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-    <div class="col-12 col-sm-6 col-md-3">
+    <div class="col-6 col-sm-6 col-md-3">
       <button
         class="
           btn-1 btn
@@ -16,10 +16,10 @@
           active: type === 'kafeId' && !showBasket
         }"
       >
-        <h5 class="m-0 pt-2 pb-2">Выберите кафе</h5>
+        <h5 class="m-0 pt-2 pb-2">Кафе</h5>
       </button>
     </div>
-    <div class="col-12 col-sm-6 col-md-3 mt-3 mt-sm-0">
+    <div class="col-6 col-sm-6 col-md-3 mt-sm-0">
       <button
         class="
           btn-2 btn
@@ -36,10 +36,10 @@
         }"
         :disabled="!kafeId"
       >
-        <h5 class="m-0 pt-2 pb-2">Категорию</h5>
+        <h5 class="m-0 pt-2 pb-2">Категория</h5>
       </button>
     </div>
-    <div class="col-12 col-sm-6 col-md-3 mt-3 mt-md-0">
+    <div class="col-6 col-sm-6 col-md-3 mt-3 mt-md-0">
       <button
         class="
           btn-3 btn
@@ -59,7 +59,7 @@
         <h5 class="m-0 pt-2 pb-2">Блюдо</h5>
       </button>
     </div>
-    <div class="col-12 col-sm-6 col-md-3 mt-3 mt-md-0">
+    <div class="col-6 col-sm-6 col-md-3 mt-3 mt-md-0">
       <button
         class="
           btn-4 btn
@@ -77,7 +77,7 @@
         }"
         :disabled="!basket.length"
       >
-        <h5 class="m-0 pt-2 pb-2">Сделайте заказ</h5>
+        <h5 class="m-0 pt-2 pb-2">Заказ</h5>
         <span
           v-if="basket.length"
           class="
