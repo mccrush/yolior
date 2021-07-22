@@ -66,7 +66,7 @@
         </div>
       </div>
       <div
-        v-if="sumProd < kafe.delsum"
+        v-if="sumProd < kafe.delsum || kafe.delsum === 0"
         class="
           list-group-item
           d-flex
@@ -79,7 +79,7 @@
       >
         <span
           >Доставка<br />
-          <small class="text-muted"
+          <small v-if="kafe.delsum > 0" class="text-muted"
             >(бесплатно при заказе от {{ kafe.delsum }} ₽)</small
           ></span
         >
@@ -132,7 +132,7 @@ export default {
       return this.products.reduce((accum, current) => accum + current.price, 0)
     },
     totalSum() {
-      if (this.sumProd >= this.kafe.delsum) {
+      if (this.sumProd >= this.kafe.delsum && this.kafe.delsum !== 0) {
         return this.sumProd
       } else {
         return this.sumProd + this.kafe.delprice
