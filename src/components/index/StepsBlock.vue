@@ -77,7 +77,7 @@
         }"
         :disabled="!basket.length"
       >
-        <h5 class="m-0 pt-2 pb-2">Заказ</h5>
+        <h5 class="m-0 pt-2 pb-2">Заказать</h5>
         <!-- <span
           v-if="basket.length"
           class="
@@ -139,6 +139,10 @@ export default {
 <style scoped>
 .btn.active {
   border: 1px solid #ffc107;
+}
+
+.btn[disabled] {
+  color: #dadada;
 }
 
 .btn-1 {
