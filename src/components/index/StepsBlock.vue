@@ -78,7 +78,7 @@
         :disabled="!basket.length"
       >
         <h5 class="m-0 pt-2 pb-2">Заказ</h5>
-        <span
+        <!-- <span
           v-if="basket.length"
           class="
             position-absolute
@@ -93,7 +93,7 @@
         >
           {{ basket.length }}
           <span class="visually-hidden">Количество выбранных блюд</span>
-        </span>
+        </span> -->
       </button>
     </div>
   </div>
