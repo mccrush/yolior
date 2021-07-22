@@ -1,7 +1,17 @@
 <template>
   <div>
     <Navbar-block />
-    <div class="max-width-780 container bg-white shadow-sm rounded-bottom pt-3">
+    <div
+      class="
+        max-width-780
+        container
+        bg-white
+        shadow-sm
+        rounded-bottom
+        mt-5
+        pt-4
+      "
+    >
       <transition name="fade" mode="out-in">
         <component :is="myComponent" />
       </transition>
