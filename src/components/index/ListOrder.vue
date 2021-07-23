@@ -87,6 +87,23 @@
           >{{ kafe.delprice }} ₽</span
         >
       </div>
+      <div
+        v-else
+        class="
+          list-group-item
+          d-flex
+          justify-content-between
+          align-items-center
+          lh-1
+          ps-2
+          pe-2
+        "
+      >
+        <span>Доставка </span>
+        <span class="badge bg-white text-success border border-success p-1"
+          >бесплатно</span
+        >
+      </div>
     </div>
     <div class="d-flex justify-content-end pt-1 pe-2">
       <div>
