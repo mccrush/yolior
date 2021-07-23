@@ -13,56 +13,98 @@
       <div
         v-for="item in products"
         :key="item.id"
-        class="list-group-item lh-1 ps-2 pe-2"
+        class="
+          list-group-item
+          d-flex
+          justify-content-between
+          align-items-strech
+          lh-1
+          p-0
+        "
       >
-        <div class="d-flex justify-content-between align-items-center">
-          <span
-            class="
-              badge
-              bg-white
-              text-danger
-              border border-danger
-              me-2
-              mb-1
-              p-1
-            "
-          >
-            {{ item.categoryTitle }}
-          </span>
-
-          <div>
-            <span v-if="item.weight" class="badge bg-light text-dark me-2 p-1">
-              {{ item.weight }} г</span
-            >
-            <span v-if="item.amount" class="badge bg-light text-dark me-2 p-1">
-              {{ item.amount }} шт</span
-            >
-            <span v-if="item.volume" class="badge bg-light text-dark me-2 p-1">
-              {{ item.volume }} л</span
-            >
+        <div class="d-flex flex-column w-75 ps-2 pt-2 pb-2">
+          <div class="d-flex justify-content-between align-items-center">
             <span
-              class="badge bg-white text-success border border-success me-2 p-1"
-              >{{ item.price }} ₽</span
+              class="
+                badge
+                bg-white
+                text-secondary
+                border border-secondary
+                me-2
+                p-1
+              "
             >
+              {{ item.categoryTitle }}
+            </span>
+
+            <div class="">
+              <span
+                v-if="item.weight"
+                class="badge bg-light text-dark me-2 p-1"
+              >
+                {{ item.weight }} г</span
+              >
+              <span
+                v-if="item.amount"
+                class="badge bg-light text-dark me-2 p-1"
+              >
+                {{ item.amount }} шт</span
+              >
+              <span
+                v-if="item.volume"
+                class="badge bg-light text-dark me-2 p-1"
+              >
+                {{ item.volume }} л</span
+              >
+              <span
+                class="
+                  badge
+                  bg-white
+                  text-success
+                  border border-success
+                  me-2
+                  p-1
+                "
+                >{{ item.price }} ₽</span
+              >
+            </div>
+          </div>
+          <div
+            class="d-flex justify-content-between align-items-start pt-2 pe-2"
+          >
+            <div class="pt-1">{{ item.title }}</div>
+            <div>
+              <span
+                class="badge bg-white text-warning border border-warning p-1"
+                >1 шт</span
+              >
+            </div>
+          </div>
+        </div>
+        <div class="d-flex justify-content-right align-items-stretch w-25 p-0">
+          <div class="w-50">
+            <button class="btn btn-outline-secondary rounded-0 w-100 h-50 p-0">
+              +
+            </button>
+            <button class="btn btn-outline-secondary rounded-0 w-100 h-50 p-0">
+              -
+            </button>
+          </div>
+          <div class="w-50">
             <button
               class="
                 btn btn-sm btn-outline-danger
+                rounded-0
                 lh-1
-                mt-1
+                w-100
+                h-100
                 p-0
-                ps-3
-                pt-2
-                pb-2
-                pe-3
               "
               @click="$emit('remove-product-from-basket', item.id)"
             >
               &#215;
             </button>
           </div>
-        </div>
-        <div class="pt-1">
-          {{ item.title }}
         </div>
       </div>
       <div
