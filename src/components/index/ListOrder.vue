@@ -70,12 +70,18 @@
             </div>
           </div>
           <div
-            class="d-flex justify-content-between align-items-start pt-2 pe-2"
+            class="d-flex justify-content-between align-items-start pt-1 pe-2"
           >
             <div class="pt-1">{{ item.title }}</div>
             <div>
               <span
-                class="badge bg-white text-warning border border-warning p-1"
+                class="
+                  badge
+                  bg-white
+                  text-secondary
+                  border border-secondary
+                  p-1
+                "
                 >1 шт</span
               >
             </div>
