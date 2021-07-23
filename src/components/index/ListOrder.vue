@@ -73,7 +73,7 @@
             class="d-flex justify-content-between align-items-start pt-1 pe-2"
           >
             <div class="pt-1">{{ item.title }}</div>
-            <div>
+            <!-- <div>
               <span
                 class="
                   badge
@@ -84,23 +84,29 @@
                 "
                 >1 шт</span
               >
-            </div>
+            </div> -->
           </div>
         </div>
         <div class="d-flex justify-content-right align-items-stretch w-25 p-0">
-          <div class="w-50">
-            <button class="btn btn-outline-secondary rounded-0 w-100 h-50 p-0">
+          <!-- <div class="w-50">
+            <button
+              @click="countUp(item.id)"
+              class="btn btn-outline-secondary rounded-0 w-100 h-50 p-0"
+            >
               +
             </button>
-            <button class="btn btn-outline-secondary rounded-0 w-100 h-50 p-0">
+            <button
+              @click="countDown(item.id)"
+              class="btn btn-outline-secondary rounded-0 w-100 h-50 p-0"
+            >
               -
             </button>
-          </div>
-          <div class="w-50">
+          </div> -->
+          <div class="w-100">
             <button
               class="
                 btn btn-sm btn-outline-danger
-                rounded-0
+                rounded-1
                 lh-1
                 w-100
                 h-100
@@ -193,6 +199,13 @@ export default {
     products() {
       return this.basket.filter(item => item.kafeId === this.kafeId)
     },
+    counters() {
+      let cts = []
+      this.products.forEach(element => {
+        cts.push({ id: element.id, count: 1 })
+      })
+      return cts
+    },
     sumProd() {
       return this.products.reduce((accum, current) => accum + current.price, 0)
     },
@@ -204,5 +217,11 @@ export default {
       }
     }
   }
+  // methods: {
+  //   countUp(id) {
+  //     this.counters.find(item => item.id === id).count++
+  //     console.log('counters:', this.counters)
+  //   }
+  // }
 }
 </script>
