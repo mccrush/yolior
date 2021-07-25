@@ -4,7 +4,7 @@
       v-for="item in sortList"
       :key="item.id"
       :id="item.id"
-      class="col-12 col-sm-6 col-md-4"
+      class="col-6 col-md-4"
     >
       <div class="card shadow-sm border-0 h-100" @click="setItemId(item.id)">
         <img
@@ -20,7 +20,10 @@
           :alt="item.title"
         />
         <div class="card-body">
-          <h5 class="card-title lh-1 mb-0">
+          <h6 class="d-sm-none card-title lh-1 mb-0">
+            {{ item.title }}
+          </h6>
+          <h5 class="d-none d-sm-block card-title lh-1 mb-0">
             {{ item.title }}
           </h5>
           <div v-if="type === 'productId'" class="card-text">
