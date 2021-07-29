@@ -3,12 +3,7 @@
     <div class="col-12">
       <div>
         <div v-for="el in basketKafes" :key="el">
-          <ListOrder
-            :kafeId="el"
-            :basket="basket"
-            @remove-product-from-basket="removeProductFromBasket"
-            @remove-all-prod-in-kafe="removeAllProductsInKafe"
-          />
+          <ListOrder :kafeId="el" :basket="basket" />
         </div>
       </div>
     </div>
@@ -28,14 +23,6 @@ export default {
     },
     basketKafes() {
       return [...new Set(this.basket.map(el => el.kafeId))]
-    }
-  },
-  methods: {
-    removeProductFromBasket(id) {
-      this.$store.commit('removeProductFromBasket', id)
-    },
-    removeAllProductsInKafe(id) {
-      this.$store.commit('removeAllProductsInKafe', id)
     }
   }
 }
