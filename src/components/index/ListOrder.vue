@@ -95,13 +95,6 @@ export default {
     products() {
       return this.basket.filter(item => item.kafeId === this.kafeId)
     },
-    counters() {
-      let cts = []
-      this.products.forEach(element => {
-        cts.push({ id: element.id, count: 1 })
-      })
-      return cts
-    },
     sumProd() {
       return this.products.reduce((accum, current) => accum + current.price, 0)
     },

@@ -63,7 +63,7 @@
         </button>
       </div>
     </div>
-    <div class="text-end pt-1">
+    <div class="text-end pt-2">
       <span class="badge bg-white text-success border border-success me-1 p-1"
         >{{ item.price }} ₽</span
       >
