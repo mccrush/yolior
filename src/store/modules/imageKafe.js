@@ -10,6 +10,18 @@ export default {
     },
   },
   actions: {
+    async deleteKafeImage({ commit }, { kafeId }) {
+      try {
+        const storageRef = storage.ref()
+        const kafeFolderRef = storageRef.child('kafes')
+        const mountainImagesRef = kafeFolderRef.child(kafeId + '/' + kafeId + '.jpeg')
+
+        await mountainImagesRef.delete()
+        return true
+      } catch (error) {
+        console.log('Error imageKafe.js, action deleteKafeImage(): ', error)
+      }
+    },
     async uploadKafeImage({ commit, state }, { kafeId, file }) {
       try {
         const storageRef = storage.ref()

@@ -55,6 +55,14 @@ const messages = {
     text: 'При загрузке изображения произошла ошибка',
     type: 'bg-danger'
   },
+  'dds': {
+    text: 'Изображение успешно удалено',
+    type: 'bg-success'
+  },
+  'dde': {
+    text: 'При удалении изображения произошла ошибка',
+    type: 'bg-danger'
+  },
   'null': null
 }
 
