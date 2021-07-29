@@ -91,7 +91,7 @@
     <div class="col-12 mt-1">
       <button
         type="button"
-        class="btn btn-sm btn-success w-100"
+        class="btn btn-success w-100"
         @click="addItem"
         :disabled="!categoryId"
       >
@@ -205,15 +205,23 @@
         </button>
       </div>
       <img v-if="item.image" :src="item.image" class="w-100 mt-1" />
+      <button
+        v-if="item.image"
+        type="button"
+        class="btn btn-outline-secondary w-100 mt-1"
+        @click="deleteImage()"
+      >
+        Удалить изображение
+      </button>
     </div>
     <div class="col-12 mt-1">
-      <div class="btn-group btn-group-sm w-100">
+      <div class="btn-group w-100">
         <button
           type="button"
           class="btn btn-outline-secondary w-25"
           @click="$emit('clear-item')"
         >
-          Очист.
+          <small>Очист.</small>
         </button>
         <button type="button" class="btn btn-success w-75" @click="updateItem">
           Сохранить
@@ -246,6 +254,20 @@ export default {
     }
   },
   methods: {
+    async deleteImage() {
+      const res = await this.$store.dispatch('deleteProductImage', {
+        productId: this.item.id,
+        categoryId: this.categoryId,
+        kafeId: this.kafeId
+      })
+
+      if (res) {
+        this.item.image = ''
+        this.$store.commit('addMessage', 'dds')
+      } else {
+        this.$store.commit('addMessage', 'dde')
+      }
+    },
     copyImageLinkInBuffer(e) {
       const el = e.target.parentNode.firstChild
       el.select()

@@ -59,11 +59,7 @@
       />
     </div>
     <div class="col-12 mt-1">
-      <button
-        type="button"
-        class="btn btn-sm btn-success w-100"
-        @click="addItem"
-      >
+      <button type="button" class="btn btn-success w-100" @click="addItem">
         Добавить
       </button>
     </div>

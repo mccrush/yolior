@@ -22,6 +22,18 @@ export default {
         console.log('Error imageKafe.js, action deleteKafeImage(): ', error)
       }
     },
+    async deleteProductImage({ commit }, { productId, categoryId, kafeId }) {
+      try {
+        const storageRef = storage.ref()
+        const kafeFolderRef = storageRef.child('kafes').child(kafeId).child('categorys').child(categoryId).child('products')
+        const mountainImagesRef = kafeFolderRef.child(productId + '/' + productId + '.jpeg')
+
+        await mountainImagesRef.delete()
+        return true
+      } catch (error) {
+        console.log('Error imageKafe.js, action deleteProductImage(): ', error)
+      }
+    },
     async uploadKafeImage({ commit, state }, { kafeId, file }) {
       try {
         const storageRef = storage.ref()
