@@ -9,7 +9,12 @@
       >
     </div>
     <div class="list-group mt-2">
-      <OrderItem v-for="item in products" :key="item.id" :item="item" />
+      <OrderItem
+        v-for="item in products"
+        :key="item.id"
+        :item="item"
+        @change-itog-summ="changeItogSumm"
+      />
       <div
         v-if="sumProd < kafe.delsum || kafe.delsum === 0"
         class="
@@ -95,6 +100,13 @@ export default {
     products() {
       return this.basket.filter(item => item.kafeId === this.kafeId)
     },
+    // productsForSumm() {
+    //   let newArray = []
+    //   this.products.forEach(item => {
+    //     newArray.push(item)
+    //   })
+    //   return newArray
+    // },
     sumProd() {
       return this.products.reduce((accum, current) => accum + current.price, 0)
     },
@@ -107,6 +119,13 @@ export default {
     }
   },
   methods: {
+    changeItogSumm({ newVal, id }) {
+      console.log('GetData: newVal = ', newVal, ', id=', id)
+      // let index = this.productsForSumm.findIndex(item => item.id === id)
+      // console.log('old productsForSumm 1', this.productsForSumm)
+      // this.productsForSumm[index].price = newVal
+      // console.log('new productsForSumm', this.productsForSumm)
+    },
     removeAllProductsInKafe() {
       this.$store.commit('removeAllProductsInKafe', this.kafeId)
     }

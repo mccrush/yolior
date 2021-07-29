@@ -22,7 +22,7 @@
         >
       </div>
       <div class="d-flex justify-content-end align-items-center w-50 p-0">
-        <div
+        <!-- <div
           class="
             width-120
             d-flex
@@ -53,7 +53,7 @@
           >
             +
           </button>
-        </div>
+        </div> -->
 
         <button
           class="btn btn-outline-danger rounded-1 lh-1 p-0 ps-3 pt-2 pb-2 pe-3"
@@ -93,6 +93,11 @@ export default {
   methods: {
     removeProductFromBasket() {
       this.$store.commit('removeProductFromBasket', this.item.id)
+    }
+  },
+  watch: {
+    itogSum(newVal, oldVal) {
+      this.$emit('change-itog-summ', { newVal, id: this.item.id })
     }
   }
 }
