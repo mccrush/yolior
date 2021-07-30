@@ -3,7 +3,17 @@
     <div class="my-vh100 col-12">
       <form
         @submit.prevent="login"
-        class="max-width border rounded shadow-sm text-left mt-5 mb-3 p-3 m-auto"
+        class="
+          max-width
+          border
+          rounded
+          shadow-sm
+          text-left
+          mt-5
+          mb-3
+          p-3
+          m-auto
+        "
       >
         <h4 class="text-center mt-2 mb-4">Authorization</h4>
         <label for="email">Email</label>
@@ -56,7 +66,11 @@
       </form>
     </div>
     <transition name="fade" mode="out-in">
-      <Message v-if="error" />
+      <Message
+        v-if="showMessage"
+        :message="message.text"
+        :class="message.type"
+      />
     </transition>
   </div>
 </template>
@@ -71,18 +85,24 @@ export default {
   data() {
     return {
       email: '',
+      showMessage: false,
       password: '',
       passType: true,
       error: false
     }
   },
+  computed: {
+    message() {
+      return this.$store.getters.getMessage || ''
+    }
+  },
   methods: {
-    showError() {
-      this.error = true
-      setTimeout(() => {
-        this.error = false
-      }, 4000)
-    },
+    // showError() {
+    //   this.error = true
+    //   setTimeout(() => {
+    //     this.error = false
+    //   }, 4000)
+    // },
     async login() {
       const formData = {
         email: this.email,
@@ -94,40 +114,36 @@ export default {
           await this.$store.dispatch('logIn', formData)
           this.$emit('log-in')
         } catch (err) {
-          this.showError()
+          //this.showError()
           if (err.code === 'auth/invalid-email') {
-            this.$store.commit('addMessage', {
-              text: 'Некорректный адрес почты!',
-              type: 'bg-danger'
-            })
+            this.$store.commit('addMessage', 'lee')
           } else if (err.code === 'auth/invalid-password') {
-            this.$store.commit('addMessage', {
-              text: 'Некорректный пароль!',
-              type: 'bg-danger'
-            })
+            this.$store.commit('addMessage', 'lpi')
           } else if (err.code === 'auth/wrong-password') {
-            this.$store.commit('addMessage', {
-              text: 'Неверный пароль!',
-              type: 'bg-danger'
-            })
+            this.$store.commit('addMessage', 'lpw')
           } else if (err.code === 'auth/user-not-found') {
-            this.$store.commit('addMessage', {
-              text: 'Пользователь с такой почтой не найден',
-              type: 'bg-danger'
-            })
+            this.$store.commit('addMessage', 'lun')
+          } else if (err.code === 'auth/too-many-requests') {
+            this.$store.commit('addMessage', 'tmr')
           } else {
-            this.$store.commit('addMessage', {
-              text: 'Ошибка: ' + err.code,
-              type: 'bg-danger'
-            })
+            this.$store.commit('addMessage', 'err'),
+              console.log('Ошибка:', err.code)
           }
         } finally {
         }
       } else {
-        this.$store.commit('addMessage', {
-          text: 'Ошибка: поля не заполнены',
-          type: 'bg-danger'
-        })
+        this.$store.commit('addMessage', 'fin')
+      }
+    }
+  },
+  watch: {
+    message() {
+      if (this.message) {
+        this.showMessage = true
+        setTimeout(() => {
+          this.showMessage = false
+          this.$store.commit('addMessage', 'null')
+        }, 3600)
       }
     }
   }

@@ -53,6 +53,9 @@
           <span class="visually-hidden">Количество выбранных блюд</span>
         </span>
       </button>
+      <button v-if="userId" @click="logOut" class="btn btn-secondary ms-2">
+        Exit
+      </button>
     </div>
   </nav>
 </template>
@@ -76,6 +79,9 @@ export default {
   methods: {
     setShowBasket() {
       this.$store.commit('setShowBasket', 'show')
+    },
+    async logOut() {
+      await this.$store.dispatch('logOut')
     }
   }
 }

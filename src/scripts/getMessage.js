@@ -63,6 +63,18 @@ const messages = {
     text: 'При удалении изображения произошла ошибка',
     type: 'bg-danger'
   },
+  'err': {
+    text: 'Неизвестная ошибка. Смотри консоль',
+    type: 'bg-danger'
+  },
+  'fin': {
+    text: 'Ошибка: поля не заполнены',
+    type: 'bg-danger'
+  },
+  'tmr': {
+    text: 'Слишком много запросов!',
+    type: 'bg-danger'
+  },
   'null': null
 }
 

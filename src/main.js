@@ -9,12 +9,12 @@ auth.onAuthStateChanged((user) => {
   if (!app) {
     app = createApp(App).use(store).mount('#app')
     store.dispatch('getKafes')
+  }
 
-    if (user) {
-      store.commit('setUserId', user.uid)
-    } else {
-      store.commit('setUserId', '')
-      console.log('main.js: user not signed: ', user)
-    }
+  if (user) {
+    store.commit('setUserId', user.uid)
+  } else {
+    store.commit('setUserId', '')
+    console.log('main.js: Пользователь не авторизован. user = ', user)
   }
 })

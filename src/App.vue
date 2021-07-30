@@ -62,6 +62,17 @@ export default {
       const myModal = new Modal(document.getElementById('descriptionModal'))
       myModal.show()
     }
+  },
+  watch: {
+    userId(newValue) {
+      if (newValue) {
+        if (window.location.pathname === '/admin') {
+          this.myComponent = 'Admin'
+        }
+      } else {
+        this.myComponent = 'Login'
+      }
+    }
   }
 }
 </script>
