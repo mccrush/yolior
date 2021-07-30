@@ -100,15 +100,11 @@ export default {
     products() {
       return this.basket.filter(item => item.kafeId === this.kafeId)
     },
-    // productsForSumm() {
-    //   let newArray = []
-    //   this.products.forEach(item => {
-    //     newArray.push(item)
-    //   })
-    //   return newArray
-    // },
     sumProd() {
-      return this.products.reduce((accum, current) => accum + current.price, 0)
+      return this.products.reduce(
+        (accum, current) => accum + current.price * current.count,
+        0
+      )
     },
     totalSum() {
       if (this.sumProd >= this.kafe.delsum && this.kafe.delsum !== 0) {
@@ -116,18 +112,6 @@ export default {
       } else {
         return this.sumProd + this.kafe.delprice
       }
-    }
-  },
-  methods: {
-    changeItogSumm({ newVal, id }) {
-      console.log('GetData: newVal = ', newVal, ', id=', id)
-      // let index = this.productsForSumm.findIndex(item => item.id === id)
-      // console.log('old productsForSumm 1', this.productsForSumm)
-      // this.productsForSumm[index].price = newVal
-      // console.log('new productsForSumm', this.productsForSumm)
-    },
-    removeAllProductsInKafe() {
-      this.$store.commit('removeAllProductsInKafe', this.kafeId)
     }
   }
 }

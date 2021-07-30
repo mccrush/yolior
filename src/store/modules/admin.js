@@ -12,6 +12,7 @@ export default {
       localStorage.setItem(type, id)
     },
     addToBasket(state, product) {
+      product.count = 1
       state.basket.push(product)
       localStorage.setItem('basket', JSON.stringify(state.basket))
     },

@@ -22,7 +22,7 @@
         >
       </div>
       <div class="d-flex justify-content-end align-items-center w-50 p-0">
-        <!-- <div
+        <div
           class="
             width-120
             d-flex
@@ -34,8 +34,8 @@
           <button
             class="btn btn-outline-secondary lh-1 p-0 ps-3 pt-2 pb-2 pe-3"
             type="button"
-            @click="count--"
-            :disabled="count < 2"
+            @click="item.count--"
+            :disabled="item.count < 2"
           >
             -
           </button>
@@ -44,16 +44,16 @@
             type="text"
             class="form-control text-center lh-1 p-0 ps-2 pt-1 pb-1 pe-2"
             aria-label="Counts"
-            v-model="count"
+            v-model="item.count"
           />
           <button
             class="btn btn-outline-secondary lh-1 p-0 ps-3 pt-2 pb-2 pe-3"
             type="button"
-            @click="count++"
+            @click="item.count++"
           >
             +
           </button>
-        </div> -->
+        </div>
 
         <button
           class="btn btn-outline-danger rounded-1 lh-1 p-0 ps-3 pt-2 pb-2 pe-3"
@@ -67,9 +67,9 @@
       <span class="badge bg-white text-success border border-success me-1 p-1"
         >{{ item.price }} ₽</span
       >
-      <small> x {{ count }} = </small>
+      <small> x {{ item.count }} = </small>
       <span class="badge bg-white text-success border border-success p-1"
-        >{{ itogSum }} ₽</span
+        >{{ item.price * item.count }} ₽</span
       >
     </div>
   </div>
@@ -80,24 +80,9 @@ export default {
   props: {
     item: Object
   },
-  data() {
-    return {
-      count: 1
-    }
-  },
-  computed: {
-    itogSum() {
-      return this.item.price * this.count
-    }
-  },
   methods: {
     removeProductFromBasket() {
       this.$store.commit('removeProductFromBasket', this.item.id)
-    }
-  },
-  watch: {
-    itogSum(newVal, oldVal) {
-      this.$emit('change-itog-summ', { newVal, id: this.item.id })
     }
   }
 }
