@@ -60,7 +60,7 @@
         Общая сумма заказа
         <span class="badge bg-success ms-1 me-2">{{ totalSum }} ₽</span>
         <button
-          @click="removeAllProductsInKafe()"
+          @click="removeAllProductsInKafe"
           class="
             btn btn-sm btn-outline-danger
             lh-1
@@ -112,6 +112,11 @@ export default {
       } else {
         return this.sumProd + this.kafe.delprice
       }
+    }
+  },
+  methods: {
+    removeAllProductsInKafe() {
+      this.$store.commit('removeAllProductsInKafe', this.kafeId)
     }
   }
 }
