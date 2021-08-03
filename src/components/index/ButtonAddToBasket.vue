@@ -1,16 +1,10 @@
 <template>
-  <div>
+  <div class="w-100 m-0">
     <button
       v-if="basket.find(el => el.id === item.id)"
-      class="
-        btn btn-success
-        rounded-0 rounded-bottom
-        text-white
-        w-100
-        pt-3
-        pb-3
-      "
-      @click.self="removeProductFromBasket(item.id)"
+      class="btn btn-success rounded-0 text-white w-100 pt-3 pb-3"
+      :class="{ 'rounded-bottom': roundBottom }"
+      @click.stop="removeProductFromBasket(item.id)"
     >
       Добавлено
       <svg
@@ -32,15 +26,9 @@
 
     <button
       v-else
-      class="
-        btn btn-warning
-        rounded-0 rounded-bottom
-        text-white
-        w-100
-        pt-3
-        pb-3
-      "
-      @click.self="addToBasket(item)"
+      class="btn btn-warning rounded-0 text-white w-100 pt-3 pb-3"
+      :class="{ 'rounded-bottom': roundBottom }"
+      @click.stop="addToBasket(item)"
     >
       В корзину
       <svg
@@ -62,7 +50,8 @@
 <script>
 export default {
   props: {
-    item: Object
+    item: Object,
+    roundBottom: { type: Boolean, default: false }
   },
   computed: {
     basket() {

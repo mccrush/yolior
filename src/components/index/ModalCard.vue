@@ -1,13 +1,13 @@
 <template>
   <div
-    class="modal fade"
+    class="modal fade m-0 p-0"
     tabindex="-1"
     aria-labelledby="cardModalLabel"
     aria-hidden="true"
   >
     <div class="modal-dialog modal-fullscreen-sm-down">
       <div class="modal-content border-0">
-        <div class="modal-header">
+        <div class="modal-header border-bottom-0">
           <button
             type="button"
             class="btn-close"
@@ -15,26 +15,23 @@
             aria-label="Close"
           ></button>
         </div>
-        <div class="modal-body">
+        <div class="modal-body p-0">
           <img
             v-if="item.image"
             :src="item.image"
-            class="card-img-top"
+            class="card-img-top rounded-0"
             :alt="item.title"
           />
           <img
             v-else
             src="/img/index/noimage.jpg"
-            class="card-img-top"
+            class="card-img-top rounded-0"
             :alt="item.title"
           />
-          <h6 class="d-sm-none card-title lh-1 mb-0" id="cardModalLabel">
-            {{ item.title }}
-          </h6>
-          <h5 class="d-none d-sm-block card-title lh-1 mb-0">
+          <h5 class="card-title lh-1 m-3 mb-0" id="cardModalLabel">
             {{ item.title }}
           </h5>
-          <div class="card-text">
+          <div class="card-text m-3 mt-0">
             <div class="lh-1 small mt-2 mb-2">{{ item.description }}</div>
             <span v-if="item.weight" class="badge bg-light text-dark me-2 p-1">
               {{ item.weight }} г</span
@@ -49,7 +46,7 @@
               {{ item.price }} ₽</span
             >
           </div>
-          <div class="modal-footer">
+          <div class="modal-footer fixed-bottom border-top-0 p-0">
             <ButtonAddToBasket :item="item" />
           </div>
         </div>

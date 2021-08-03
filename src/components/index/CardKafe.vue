@@ -37,7 +37,7 @@
         </div>
       </div>
       <div v-if="type === 'productId'">
-        <ButtonAddToBasket :item="item" />
+        <ButtonAddToBasket :item="item" :roundBottom="true" />
       </div>
     </div>
   </div>
