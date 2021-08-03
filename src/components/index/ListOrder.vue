@@ -9,12 +9,7 @@
       >
     </div>
     <div class="list-group mt-2">
-      <OrderItem
-        v-for="item in products"
-        :key="item.id"
-        :item="item"
-        @change-itog-summ="changeItogSumm"
-      />
+      <OrderItem v-for="item in products" :key="item.id" :item="item" />
       <div
         v-if="sumProd < kafe.delsum || kafe.delsum === 0"
         class="

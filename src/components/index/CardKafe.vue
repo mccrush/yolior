@@ -13,7 +13,7 @@
         class="card-img-top"
         :alt="item.title"
       />
-      <div class="card-body">
+      <div class="card-body p-2 p-sm-3">
         <h6 class="d-sm-none card-title lh-1 mb-0">
           {{ item.title }}
         </h6>
@@ -21,7 +21,7 @@
           {{ item.title }}
         </h5>
         <div v-if="type === 'productId'" class="card-text">
-          <div class="truncate-text lh-1 small mt-2 mb-2">
+          <div class="truncate-text lh-1 small mt-1 mt-sm-2 mb-1 mb-sm-2">
             {{ item.description }}
           </div>
           <span v-if="item.weight" class="badge bg-light text-dark me-2 p-1">
