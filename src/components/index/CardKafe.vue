@@ -21,7 +21,9 @@
           {{ item.title }}
         </h5>
         <div v-if="type === 'productId'" class="card-text">
-          <div class="lh-1 small mt-2 mb-2">{{ item.description }}</div>
+          <div class="truncate-text lh-1 small mt-2 mb-2">
+            {{ item.description }}
+          </div>
           <span v-if="item.weight" class="badge bg-light text-dark me-2 p-1">
             {{ item.weight }} г</span
           >
@@ -75,5 +77,11 @@ export default {
 
 .opacity-06 {
   opacity: 0.6;
+}
+
+.truncate-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 </style>

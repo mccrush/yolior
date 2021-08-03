@@ -31,7 +31,7 @@
           <h5 class="card-title lh-1 m-3 mb-0" id="cardModalLabel">
             {{ item.title }}
           </h5>
-          <div class="card-text m-3 mt-0">
+          <div class="card-text m-3 mt-2">
             <div class="lh-1 small mt-2 mb-2">{{ item.description }}</div>
             <span v-if="item.weight" class="badge bg-light text-dark me-2 p-1">
               {{ item.weight }} г</span
@@ -46,8 +46,11 @@
               {{ item.price }} ₽</span
             >
           </div>
-          <div class="modal-footer fixed-bottom border-top-0 p-0">
+          <div class="d-sm-none modal-footer fixed-bottom border-top-0 p-0">
             <ButtonAddToBasket :item="item" />
+          </div>
+          <div class="d-none d-sm-block modal-footer border-top-0 p-0">
+            <ButtonAddToBasket :item="item" :roundBottom="true" />
           </div>
         </div>
       </div>
