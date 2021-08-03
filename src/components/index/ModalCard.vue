@@ -8,7 +8,6 @@
     <div class="modal-dialog modal-fullscreen-sm-down">
       <div class="modal-content border-0">
         <div class="modal-header">
-          <!-- <h5 class="modal-title" id="exampleModalLabel">О проекте</h5> -->
           <button
             type="button"
             class="btn-close"
@@ -35,7 +34,7 @@
           <h5 class="d-none d-sm-block card-title lh-1 mb-0">
             {{ item.title }}
           </h5>
-          <div v-if="type === 'productId'" class="card-text">
+          <div class="card-text">
             <div class="lh-1 small mt-2 mb-2">{{ item.description }}</div>
             <span v-if="item.weight" class="badge bg-light text-dark me-2 p-1">
               {{ item.weight }} г</span
